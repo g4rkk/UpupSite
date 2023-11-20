@@ -2,71 +2,54 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org"
     th:replace="~{layout/main :: main(~{::title}, ~{::body/content()})}">
 <head>
-<meta charset="UTF-8">
-<title>Good</title>
+    <meta charset="UTF-8">
+    <title>Good</title>
 </head>
 <body>
     <main>
-        <div class="container py-5">
-            <h1 class="text-center">Good</h1>
-            <div class="chat-wrap">
-                <div class="mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
-                        </div>
-                        <div>
-                            <div>user name</div>
-                            <div>
-                                メッセージ内容です。
-                            </div>
-                        </div>
+        <h1 class="text-center">Good</h1>
+        <div class="chat-wrap">
+            <div class="chat-content mt-4" onclick="chatContent(2, 'user name')">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
                     </div>
-                </div>
-                
-                <div class="mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
-                        </div>
+                    <div>
+                        <div>user name</div>
                         <div>
-                            <div>user name</div>
-                            <div>
-                                メッセージ内容です。
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
-                        </div>
-                        <div>
-                            <div>user name</div>
-                            <div>
-                                メッセージ内容です。
-                            </div>
+                            メッセージ内容です。
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
-            
-            <form>
-                <div class="d-flex">
-                    <div class="pe-2">
-                        <textarea id="story" name="story" rows="1" class="w-100 border border-secondary rounded"></textarea>
+                
+            <div class="reply-content mt-2 ms-4">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary">送信</button>
+                        <div>user name</div>
+                        <div>
+                            返信内容です。
+                        </div>
                     </div>
                 </div>
-            </form>
-            
-
+            </div>
+                
+            <div class="chat-content mt-4" onclick="chatContent(1, 'hogehogesan')">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+                    </div>
+                    <div>
+                        <div>user name</div>
+                        <div>
+                            メッセージ内容です。
+                        </div>
+                     </div>
+                </div>
+            </div>
     </main>
 </body>
 </html>

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+.chat-form {
+    width: 80%;
+}
+.chat-post {
+    width: 20%;
+}
+.chat-post button {
+    min-width: 60px;
+}
+
+#form-block {
+    position: fixed;
+    bottom: 5%;
+}
+
+.chat-content, .reply-content {
+    cursor: pointer;
+}
+
+
+.round_btn {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;  /* 丸みの度合い */
+  background: red; /* ボタンの背景色 */
+}
+ 
+.round_btn::before, .round_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 11px;
+  background: #fff; /* バツ印の色 */
+}
+ 
+.round_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+ 
+.round_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+
+
+
+.click-action {
+    display: none;
+}
+.click-action.active {
+    display: flex;
+    align-items: center;
+}
