@@ -16,6 +16,10 @@
     <div class="container py-4">
         
         <div th:replace="${content}"></div>
+        
+        <!--
+            GoodかBadかで条件分岐をする
+        -->
         <form id="form-block" class="container" th:object="${messageForm}" th:action="@{/main/good/message}" method="POST">
             <div class="click-action">
                 <div id="clicked-name" class="me-2"></div>

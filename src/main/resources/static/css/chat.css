@@ -57,3 +57,9 @@
     display: flex;
     align-items: center;
 }
+
+
+
+.small-font {
+    font-size: .7em;
+}

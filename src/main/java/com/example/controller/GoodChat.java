@@ -21,18 +21,23 @@ public class GoodChat {
 	
 	@MessageMapping("/main/good/chat")
 	@SendTo("/topic/messages")
-	public String SendChatMessage(String message) {
+	public String sendChatMessage(String message) {
 		/**
 		 * 
 		 * ここにDBの処理を書く
 		 * 
 		 */
+		
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		System.out.println(message);
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		
 		return message;
 	}
 	
 	@MessageMapping("/main/good/reply")
 	@SendTo("/topic/messages")
-	public String SendReplyMessage(String message) {
+	public String sendReplyMessage(String message) {
 		/**
 		 * ここに返信に必要なDB処理
 		 */
