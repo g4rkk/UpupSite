@@ -19,7 +19,8 @@ function connect() {
              * ここで分岐かな？
              * showMessage()に対してチャットなのか、返信なのか
              */
-            showChatMessage(JSON.parse(response.body).content);
+            console.log(response);
+            showChatMessage(JSON.parse(response.body));
         });
     });
 }
@@ -36,10 +37,18 @@ function chatContent(id, userName) {
     clickAction.classList.add("active");
 }
 
+function sendChat(messageForm) {
+    stompClient.send('/app/main/good/chat', {}, messageForm);
+}
+
+function sendReply(message) {
+    // stompClient.send('/app/main/good/reply', {}, JSON.stringify({ 'content': message, 'messge_id': messageId }));
+}
+
+
 function sendMessage() {
     const form = document.getElementById('form-block');
-    const formData = new FormData(form);
-    const message = formData.get('message');
+    const message = document.getElementById('message').value;    
     
     /**
      * 条件分岐をする
@@ -47,9 +56,11 @@ function sendMessage() {
      */
     
     if (messageId > 0) {
-        sendReply(message);
+        
+        sendReply();
     } else {
-        sendChat(message);
+        const messageForm = { message: message };
+        sendChat(JSON.stringify(messageForm));
     }
 }
 
@@ -70,14 +81,14 @@ function showChatMessage(messageData) {
      
      */
     
-    console.log('レスポンス値' + messageData);
+    console.log('レスポンス値 ' + messageData.message);
     
-    if (messageData.loggedInUser === 0) {
+    if (messageData.loggedUserFlag == 0) {
         console.log("削除なし");
         /**
          * 削除なしのHTML
          */
-    } else if (messageData.loggedInUser === 1) {
+    } else if (messageData.loggedUserFlag == 1) {
          /**
          * 削除ありのHTML
          */
@@ -86,13 +97,6 @@ function showChatMessage(messageData) {
 }
 
 
-function sendChat(message) {
-    stompClient.send('/app/main/good/chat', {}, JSON.stringify({ 'content': message }));
-}
-
-function sendReply(message) {
-    stompClient.send('/app/main/good/reply', {}, JSON.stringify({ 'content': message, 'messge_id': messageId }));
-}
 
 
 document.addEventListener("DOMContentLoaded", function() {

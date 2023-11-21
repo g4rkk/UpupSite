@@ -21,7 +21,7 @@ public class GoodChat {
 	
 	@MessageMapping("/main/good/chat")
 	@SendTo("/topic/messages")
-	public String sendChatMessage(String message) {
+	public MessageForm sendChatMessage(MessageForm messageForm) {
 		/**
 		 * 
 		 * ここにDBの処理を書く
@@ -29,10 +29,19 @@ public class GoodChat {
 		 */
 		
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-		System.out.println(message);
+		System.out.println(messageForm.getMessage());
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
 		
-		return message;
+		/**
+		 * 条件分岐でログインユーザーと、登録したメッセージのユーザーIDが一致した場合は
+		 * messageForm.setLoggedUserFlag(1);
+		 * 
+		 * 一致しない場合は
+		 * messageForm.setLoggedUserFlag(0);
+		 */
+		
+		messageForm.setLoggedUserFlag(0);
+		return messageForm;
 	}
 	
 	@MessageMapping("/main/good/reply")
