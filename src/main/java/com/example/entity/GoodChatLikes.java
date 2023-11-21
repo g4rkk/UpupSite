@@ -28,6 +28,6 @@ public class GoodChatLikes {
 	}
 	
 	public GoodChat getGoodChat() {
-		return this.goodChat
+		return this.goodChat;
 	}
 }
