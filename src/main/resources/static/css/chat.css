@@ -63,3 +63,34 @@
 .small-font {
     font-size: .7em;
 }
+
+
+.heart-position {
+    position: relative;
+}
+.heart {
+  position: absolute;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+
+}
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  background: red;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin :100% 100%;
+}

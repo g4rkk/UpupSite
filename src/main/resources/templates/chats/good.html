@@ -17,10 +17,16 @@
                     <div>
                         <div>user name</div>
                         <div>
-                            メッセージ内容です。
+                            メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。メッセージ内容です。
                         </div>
-                        <div class="small-font mt-1">メッセージを返信する</div>
+                        <div class="d-flex">
+                            <div class="small-font mt-1">メッセージを返信する</div>
+                            <div class="heart-position">
+                                <div class="heart"></div>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
                 
@@ -55,6 +61,17 @@
                         </div>
                         
                      </div>
+                </div>
+            </div>
+            
+            
+            <div>
+                ここから下がDBから取得したデータです。
+                <div th:each="goodChat : ${goodChats}">
+                    <div th:text="${goodChat.id}"></div>
+                    <div th:text="${goodChat.userId}"></div>
+                    <div th:text="${goodChat.message}"></div>
+                    <div th:text="${goodChat.createdAt}"></div>
                 </div>
             </div>
     </main>

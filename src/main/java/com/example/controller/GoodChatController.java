@@ -1,21 +1,36 @@
 package com.example.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.entity.GoodChat;
 import com.example.form.MessageForm;
+import com.example.service.GoodChatService;
 
 @Controller
 @RequestMapping("/main")
-public class GoodChat {
+public class GoodChatController {
+	private final GoodChatService goodChatService;
+	
+	@Autowired
+	public GoodChatController(GoodChatService goodChatService) { 
+		this.goodChatService = goodChatService;
+	}
+	
 	
 	@GetMapping("/good")
-	public String index(@ModelAttribute MessageForm messageForm) {
+	public String index(@ModelAttribute MessageForm messageForm, Model model) {
+		List<GoodChat> goodChats = this.goodChatService.findAll();
+
+		model.addAttribute("goodChats", goodChats);
 		return "chats/good";
 	}
 	

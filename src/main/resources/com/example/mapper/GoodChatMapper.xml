@@ -5,9 +5,13 @@
 <mapper namespace="com.example.mapper.GoodChatMapper">
     <resultMap type="com.example.entity.GoodChat" id="goodChatMap">
         <id column="ID" property="id"/>
-        <result column="NAME" property="name"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="MESSAGE" property="message"/>
+        <result column="CREATED_AT" property="createdAt"/>
+        <result column="DELETED_AT" property="deletedAt"/>
     </resultMap>
 
     <select id="findAll" resultMap="goodChatMap">
+        SELECT * FROM GOOD_CHATS
     </select>
 </mapper>
