@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{layout/main :: main(~{::title}, ~{::body/content()})}">
+    th:replace="~{layout/chats/main :: main(~{::title}, ~{::body/content()})}">
 <head>
     <meta charset="UTF-8">
     <title>Good</title>
@@ -74,17 +74,19 @@
             
             
             
+            
+            <!-- kokokara -->
             <div th:each="goodChat : ${goodChats}" class="chat-content mt-3" th:id="'chat_' + ${goodChat.id}">
                 <div class="d-flex align-items-center">
                     <div class="me-3">
                         <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
                     </div>
                     <div class="chat-content">
-                        <div>user name</div>
-                        <div th:text="${goodChat.message}" th:onclick="|chatContent(${goodChat.id}, 'user name')|">
+                        <div th:text="${goodChat.chatUser.name}"></div>
+                        <div th:text="${goodChat.message}" th:onclick="'chatAction(' + ${goodChat.id} + ', user name)'">
                         </div>
                         <div class="d-flex">
-                            <div class="small-font mt-1" onclick="chatContent(2, 'user name')">メッセージを返信する</div>
+                            <div class="small-font mt-1" onclick="chatAction(2, 'user name')">メッセージを返信する</div>
                             <!--activeがあったらいいね済み-->
                             <div class="heart-position heart-action">
                                 <div class="heart" onclick="likeAction(1, this)"></div>
@@ -94,13 +96,14 @@
                     </div>
                 </div>
                 
+                
                 <div th:each="goodReply : ${goodChat.goodReplies}" class="reply-content mt-2 ms-5">
                     <div class="d-flex align-items-center">
                         <div class="me-3">
                             <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
                         </div>
                         <div>
-                            <div>user name</div>
+                            <div th:text="${goodReply.replyUser.name}"></div>
                             <div>
                                 返信内容です。
                             </div>
@@ -115,24 +118,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-
-            <div>
-                ここから下がDBから取得したデータです。
-                <div th:each="goodChat : ${goodChats}">
-                    <div>ID</div>
-                    <div th:text="${goodChat.id}"></div>
-                    <div th:text="${goodChat.userId}"></div>
-                    <div th:text="${goodChat.message}"></div>
-                    <div th:text="${goodChat.createdAt}"></div>
-                    
-                    <div th:each="goodReply : ${goodChat}" class="ms-5">
-                        <div>返信</div>
-                        <div th:text="${goodReply.message}"></div>
-
-                </div>
-                
             </div>
     </main>
 </body>

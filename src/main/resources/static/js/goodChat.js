@@ -30,7 +30,7 @@ function closeAction() {
     clickAction.classList.remove("active");
 }
 
-function chatContent(id, userName) {
+function chatAction(id, userName) {
     messageId = id;
     clickedName.innerHTML = userName;
     

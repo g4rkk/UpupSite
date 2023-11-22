@@ -10,6 +10,7 @@ public class GoodReply {
 	private LocalDateTime createdAt;
 	private LocalDateTime deletedAt;
 	private GoodChat goodChat;
+	private User replyUser;
 	
 	public Integer getId() {
 		return this.id;
@@ -59,5 +60,12 @@ public class GoodReply {
 	}
 	public void setGoodChat(GoodChat goodChat) {
 		this.goodChat = goodChat;
+	}
+	
+	public User getReplyUser() {
+		return this.replyUser;
+	}
+	public void setReplyUser(User replyUser) {
+		this.replyUser = replyUser;
 	}
 }

@@ -15,7 +15,7 @@
     bottom: 5%;
 }
 
-.chat-content, .reply-content {
+.chat-content {
     cursor: pointer;
 }
 
