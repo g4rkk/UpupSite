@@ -1,6 +1,6 @@
 package com.example.entity;
 
-public class GoodReplyLikes {
+public class GoodReplyLike {
 	private Integer id;
 	private Integer chatId;
 	private Integer userId;

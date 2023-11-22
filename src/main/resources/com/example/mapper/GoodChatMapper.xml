@@ -9,9 +9,29 @@
         <result column="MESSAGE" property="message"/>
         <result column="CREATED_AT" property="createdAt"/>
         <result column="DELETED_AT" property="deletedAt"/>
+        
+        <collection property="goodReplies" ofType="com.example.entity.GoodReply">
+            <id column="GR_ID" property="id"/>
+            <result column="GR_USER_ID" property="userId"/>
+            <result column="GR_CHAT_ID" property="chatId"/>
+            <result column="GR_MESSAGE" property="message"/>
+            <result column="GR_CREATED_AT" property="createdAt"/>
+            <result column="GR_DELETED_AT" property="deletedAt"/>
+        </collection>
     </resultMap>
 
     <select id="findAll" resultMap="goodChatMap">
-        SELECT * FROM GOOD_CHATS
+        SELECT
+            GC.*
+            , GR.ID AS GR_ID
+            , GR.USER_ID AS GR_USER_ID
+            , GR.CHAT_ID AS GR_CHAT_ID
+            , GR.MESSAGE AS GR_MESSAGE
+            , GR.CREATED_AT AS GR_CREATED_AT
+            , GR.DELETED_AT AS GR_DELETED_AT
+	   FROM
+	       GOOD_CHATS GC
+	   LEFT OUTER JOIN GOOD_REPLIES GR
+	       ON GC.ID = GR.CHAT_ID
     </select>
 </mapper>

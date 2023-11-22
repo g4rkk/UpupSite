@@ -74,10 +74,23 @@
   width: 20px;
   height: 20px;
   margin-top: 3px;
-
 }
 .heart:before,
 .heart:after {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  background: gray;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart-action.active .heart:before,
+.heart-action.active .heart:after {
   position: absolute;
   content: "";
   left: 10px;
@@ -89,8 +102,32 @@
   transform: rotate(-45deg);
   transform-origin: 0 100%;
 }
+
 .heart:after {
   left: 0;
   transform: rotate(45deg);
   transform-origin :100% 100%;
+}
+.heart-action.active .heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin :100% 100%;
+}
+
+
+.heart-action .heart-count {
+    font-size: .8em;
+    color: gray;
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 33px;
+}
+.heart-action.active .heart-count {
+    font-size: .8em;
+    color: red;
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 33px;
 }

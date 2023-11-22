@@ -1,10 +1,10 @@
 package com.example.entity;
 
-public class BadChatLikes {
+public class BadReplyLike {
 	private Integer id;
 	private Integer chatId;
 	private Integer userId;
-	private BadChat badChat;
+	private BadReply badReply;
 	
 	public Integer getId() {
 		return this.id;
@@ -28,10 +28,10 @@ public class BadChatLikes {
 	}
 	
 	
-	public BadChat getBadChat() {
-		return this.badChat;
+	public BadReply getBadReply() {
+		return this.badReply;
 	}
-	public void setBadChat(BadChat badChat) {
-		this.badChat = badChat;
+	public void setBadReply(BadReply badReply) {
+		this.badReply = badReply;
 	}
 }
