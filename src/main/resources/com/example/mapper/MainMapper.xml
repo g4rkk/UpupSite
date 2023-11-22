@@ -8,7 +8,6 @@
         <result column="MESSAGE" property="message"/>
         <result column="createdAt" property="createdAt"/>
         <result column="deletedAt" property="deletedAt"/>
-        <result column="goodReplies" property="goodReplies"/>
     </resultMap>
     
     <resultMap type="com.example.entity.BadChat" id="mainBadMap">
@@ -16,15 +15,13 @@
         <result column="MESSAGE" property="message"/>
         <result column="createdAt" property="createdAt"/>
         <result column="deletedAt" property="deletedAt"/>
-        <result column="goodReplies" property="goodReplies"/>
     </resultMap>
 
     <select id="findGoodChatRandom" resultMap="mainGoodMap">
-    	select * From user;
-<!--        SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <= 2;-->
+        SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[ <= ]]> 2;
     </select>
 
-<!--    <select id="findBadChatRandom" resultMap="mainBadMap">-->
-<!--        SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <= 2;-->
-<!--    </select>-->
+    <select id="findBadChatRandom" resultMap="mainBadMap">
+        SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[ <= ]]> 2;
+    </select>
 </mapper>
