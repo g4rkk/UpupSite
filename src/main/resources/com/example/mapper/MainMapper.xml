@@ -24,4 +24,12 @@
     <select id="findBadchatRandom" resultMap="mainBadMap">
        SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[<=]]> 5
     </select>
+    
+    <update id="choise_good_update">
+        UPDATE USERS SET CHOISE_GOOD = CHOISE_GOOD + 1 WHERE id = #{id}
+    </update>
+    
+    <update id="choise_bad_update">
+        UPDATE USERS SET CHOISE_BAD = CHOISE_BAD + 1 WHERE id = #{id}
+    </update>
 </mapper>
