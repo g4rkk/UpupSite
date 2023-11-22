@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>バーチャート</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>あげあげ運勢</title>
+    <link rel="stylesheet" href="/css/FortuneStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="chart">
-        <ul class="bars">
-            <li class="bar" data-value="60"><span>金運</span></li>
-            <li class="bar" data-value="80"><span>仕事運</span></li>
-            <li class="bar" data-value="75"><span>恋愛運</span></li>
-        </ul>
+    <div class="container">
+        <h2>あげあげ運勢</h2>
+        <div class="chart-container">
+            <canvas id="fortuneChart"></canvas>
+        </div>
+        <button onclick="location.reload()">あなたの運勢を更新</button>
     </div>
+
+    <div id="moneyLuck" style="display: none;" th:text="${moneyLuck}"></div>
+    <div id="workLuck" style="display: none;" th:text="${workLuck}"></div>
+    <div id="loveLuck" style="display: none;" th:text="${loveLuck}"></div>
+
+    <script src="/js/FortuneJavascript.js"></script>
 </body>
 </html>
