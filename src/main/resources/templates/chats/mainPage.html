@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,11 +38,17 @@
 
     <div class="main_chat">
         <div class="child">
-            <input type="button" value="GOOD" onclick="Function1()">
+            <input type="button" value="GOOD" >
+            <tr th:each="goodchat : ${goodchats}">
+				<td th:text="${goodchat.message}"></td>
+            </tr>
         </div>
     
         <div class="child">
-            <input type="button" value="BAD" onclick="Function2()">
+            <input type="button" value="BAD" ><br>
+            <tr th:each="badchat : ${badchats}">
+				<td th:text="${badchat.message}"></td><br>
+            </tr>
         </div>     
     </div>
     

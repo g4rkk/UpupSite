@@ -14,5 +14,4 @@ public interface MainMapper {
     public List<BadChat> findBadchatRandom();
     public  void choise_good_update(Integer id);
     public  void choise_bad_update(Integer id);
-    
 }

@@ -29,9 +29,9 @@ public class MainController {
         model.addAttribute("goodchats", goodchats);
         List<BadChat> badchats = this.mainService.findBadchatRandom();
         model.addAttribute("badchats", badchats);
-        System.out.println(goodchats.get(0));
-        System.out.println(badchats.get(0));
-        return "mainPage";
+        System.out.println(goodchats.toString());
+//        System.out.println(badchats.get(0));
+        return "/chats/mainPage";
     }
     
     @PostMapping("/goodCount")
