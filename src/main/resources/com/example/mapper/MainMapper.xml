@@ -17,11 +17,11 @@
         <result column="deletedAt" property="deletedAt"/>
     </resultMap>
 
-    <select id="findGoodChatRandom" resultMap="mainGoodMap">
-        SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[ <= ]]> 2;
+    <select id="findGoodchatRandom" resultMap="mainGoodMap">
+       SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[<=]]> 5
     </select>
 
-    <select id="findBadChatRandom" resultMap="mainBadMap">
-        SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[ <= ]]> 2;
+    <select id="findBadchatRandom" resultMap="mainBadMap">
+       SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[<=]]> 5
     </select>
 </mapper>
