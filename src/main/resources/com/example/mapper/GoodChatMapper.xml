@@ -33,6 +33,7 @@
             <result column="R_MESSAGE" property="message"/>
             <result column="R_CREATED_AT" property="createdAt"/>
             <result column="R_DELETED_AT" property="deletedAt"/>
+            <result column="REPLY_LIKES_COUNT" property="goodReplyLikesCount"/>
             <association property="replyUser" javaType="com.example.entity.User">
                 <id column="UR_ID" property="id"/>
 	            <result column="UR_EMAIL" property="email"/>
@@ -47,6 +48,11 @@
 	            <result column="UR_LOVE" property="love"/>
 	            <result column="UR_MOTIVATION" property="motivation"/>
             </association>
+            <collection property="goodReplyLikes" ofType="com.example.entity.GoodReplyLike">
+	            <id column="RL_ID" property="id"/>
+	            <result column="RL_REPLY_ID" property="replyId"/>
+	            <result column="RL_USER_ID" property="userId"/>
+	        </collection>
         </collection>
         
         <collection property="goodChatLikes" ofType="com.example.entity.GoodChatLike">
@@ -54,6 +60,7 @@
             <result column="CL_CHAT_ID" property="chatId"/>
             <result column="CL_USER_ID" property="userId"/>
         </collection>
+        
     </resultMap>
     
     <select id="findAll" resultMap="goodChatMap">
@@ -69,7 +76,24 @@
             , UR.NAME AS UR_NAME
             , CL.CHAT_ID AS CL_CHAT_ID
             , CL.USER_ID AS CL_USER_ID
-            , COUNT(CL.CHAT_ID) AS CHAT_LIKES_COUNT
+            , (
+                SELECT
+                    COUNT(*)
+                FROM
+                    GOOD_CHAT_LIKES
+                WHERE
+                    C.ID = CHAT_ID
+            ) AS CHAT_LIKES_COUNT
+            , RL.REPLY_ID AS RL_REPLY_ID
+            , RL.USER_ID AS RL_USER_ID
+            , (
+                SELECT
+                    COUNT(*)
+                FROM
+                    GOOD_REPLY_LIKES
+                WHERE
+                    R.ID = REPLY_ID
+            ) AS REPLY_LIKES_COUNT
 	   FROM
 	       GOOD_CHATS C
 	   LEFT OUTER JOIN GOOD_REPLIES R
@@ -80,21 +104,10 @@
 	       ON R.USER_ID = UR.ID
 	   LEFT OUTER JOIN GOOD_CHAT_LIKES CL
 	       ON C.ID = CL.CHAT_ID
-	   GROUP BY
-	       C.ID
-	       , C.USER_ID
-	       , C.MESSAGE
-	       , C.CREATED_AT
-	       , C.DELETED_AT
-	       , R.ID
-	       , R.USER_ID
-	       , R.CHAT_ID
-	       , R.MESSAGE
-	       , R.CREATED_AT
-	       , R.DELETED_AT
-	       , UC.NAME
-	       , UR.NAME
-	       , CL.CHAT_ID
-	       , CL.USER_ID
+	   LEFT OUTER JOIN GOOD_REPLY_LIKES RL
+	       ON R.ID = RL.REPLY_ID
+	   ORDER BY
+            C.ID ASC
+            , R.ID ASC
     </select>
 </mapper>
