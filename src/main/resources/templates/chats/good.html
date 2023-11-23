@@ -21,9 +21,7 @@
                         <div class="heart-position heart-action">
                             <div class="heart" onclick="likeAction(1, this)"></div>
                             <div class="heart-count">56</div>
-                            <div th:each="goodChatLike, stat : ${goodChat.goodChatLikes}">
-                                <div th:text="${goodChatLike.chatId}"></div>
-                            </div>
+                            <div th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         <div class="d-flex align-items-center mt-2">
                             <div class="small-font" onclick="chatAction(2, 'user name')">メッセージを返信する</div>

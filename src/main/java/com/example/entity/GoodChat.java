@@ -12,6 +12,7 @@ public class GoodChat {
 	private List<GoodReply> goodReplies;
 	private User chatUser;
 	private List<GoodChatLike> goodChatLikes;
+	private Integer goodChatLikesCount;
 	
 	public Integer getId() {
 		return this.id;
@@ -68,5 +69,12 @@ public class GoodChat {
 	}
 	public void setGoodChatLikes(List<GoodChatLike> goodChatLikes) {
 		this.goodChatLikes = goodChatLikes;
+	}
+	
+	public Integer getGoodChatLikesCount() {
+		return this.goodChatLikesCount;
+	}
+	public void setGoodChatLikesCount(Integer goodChatLikesCount) {
+		this.goodChatLikesCount = goodChatLikesCount;
 	}
 }

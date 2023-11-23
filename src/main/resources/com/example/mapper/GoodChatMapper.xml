@@ -9,6 +9,7 @@
         <result column="MESSAGE" property="message"/>
         <result column="CREATED_AT" property="createdAt"/>
         <result column="DELETED_AT" property="deletedAt"/>
+        <result column="CHAT_LIKES_COUNT" property="goodChatLikesCount"/>
         
         <association property="chatUser" javaType="com.example.entity.User">
             <id column="UC_ID" property="id"/>
@@ -54,7 +55,7 @@
             <result column="CL_USER_ID" property="userId"/>
         </collection>
     </resultMap>
-
+    
     <select id="findAll" resultMap="goodChatMap">
         SELECT
             C.*
@@ -68,6 +69,7 @@
             , UR.NAME AS UR_NAME
             , CL.CHAT_ID AS CL_CHAT_ID
             , CL.USER_ID AS CL_USER_ID
+            , COUNT(CL.CHAT_ID) AS CHAT_LIKES_COUNT
 	   FROM
 	       GOOD_CHATS C
 	   LEFT OUTER JOIN GOOD_REPLIES R
@@ -77,6 +79,22 @@
 	   LEFT OUTER JOIN USERS UR
 	       ON R.USER_ID = UR.ID
 	   LEFT OUTER JOIN GOOD_CHAT_LIKES CL
-	       ON C.ID = CL.CHAT_ID AND CL.USER_ID IS NOT NULL
+	       ON C.ID = CL.CHAT_ID
+	   GROUP BY
+	       C.ID
+	       , C.USER_ID
+	       , C.MESSAGE
+	       , C.CREATED_AT
+	       , C.DELETED_AT
+	       , R.ID
+	       , R.USER_ID
+	       , R.CHAT_ID
+	       , R.MESSAGE
+	       , R.CREATED_AT
+	       , R.DELETED_AT
+	       , UC.NAME
+	       , UR.NAME
+	       , CL.CHAT_ID
+	       , CL.USER_ID
     </select>
 </mapper>

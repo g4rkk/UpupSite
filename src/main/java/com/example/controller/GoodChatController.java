@@ -29,7 +29,7 @@ public class GoodChatController {
 	@GetMapping("/good")
 	public String index(@ModelAttribute MessageForm messageForm, Model model) {
 		List<GoodChat> goodChats = this.goodChatService.findAll();
-
+		
 		model.addAttribute("goodChats", goodChats);
 		return "chats/good";
 	}
