@@ -26,11 +26,15 @@ function connect() {
 }
 
 function closeAction() {
+    removeFormHeight();
     messageId = 0;
     clickAction.classList.remove("active");
 }
 
 function chatAction(id, userName) {
+    if (messageId === 0) {
+        addFormHeight();
+    }
     messageId = id;
     clickedName.innerHTML = userName;
     

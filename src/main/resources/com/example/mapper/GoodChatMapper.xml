@@ -26,12 +26,12 @@
         </association>
         
         <collection property="goodReplies" ofType="com.example.entity.GoodReply">
-            <id column="GR_ID" property="id"/>
-            <result column="GR_USER_ID" property="userId"/>
-            <result column="GR_CHAT_ID" property="chatId"/>
-            <result column="GR_MESSAGE" property="message"/>
-            <result column="GR_CREATED_AT" property="createdAt"/>
-            <result column="GR_DELETED_AT" property="deletedAt"/>
+            <id column="R_ID" property="id"/>
+            <result column="R_USER_ID" property="userId"/>
+            <result column="R_CHAT_ID" property="chatId"/>
+            <result column="R_MESSAGE" property="message"/>
+            <result column="R_CREATED_AT" property="createdAt"/>
+            <result column="R_DELETED_AT" property="deletedAt"/>
             <association property="replyUser" javaType="com.example.entity.User">
                 <id column="UR_ID" property="id"/>
 	            <result column="UR_EMAIL" property="email"/>
@@ -47,26 +47,36 @@
 	            <result column="UR_MOTIVATION" property="motivation"/>
             </association>
         </collection>
+        
+        <collection property="goodChatLikes" ofType="com.example.entity.GoodChatLike">
+            <id column="CL_ID" property="id"/>
+            <result column="CL_CHAT_ID" property="chatId"/>
+            <result column="CL_USER_ID" property="userId"/>
+        </collection>
     </resultMap>
 
     <select id="findAll" resultMap="goodChatMap">
         SELECT
-            GC.*
-            , GR.ID AS GR_ID
-            , GR.USER_ID AS GR_USER_ID
-            , GR.CHAT_ID AS GR_CHAT_ID
-            , GR.MESSAGE AS GR_MESSAGE
-            , GR.CREATED_AT AS GR_CREATED_AT
-            , GR.DELETED_AT AS GR_DELETED_AT
+            C.*
+            , R.ID AS R_ID
+            , R.USER_ID AS R_USER_ID
+            , R.CHAT_ID AS R_CHAT_ID
+            , R.MESSAGE AS R_MESSAGE
+            , R.CREATED_AT AS R_CREATED_AT
+            , R.DELETED_AT AS R_DELETED_AT
             , UC.NAME AS UC_NAME
             , UR.NAME AS UR_NAME
+            , CL.CHAT_ID AS CL_CHAT_ID
+            , CL.USER_ID AS CL_USER_ID
 	   FROM
-	       GOOD_CHATS GC
-	   LEFT OUTER JOIN GOOD_REPLIES GR
-	       ON GC.ID = GR.CHAT_ID
+	       GOOD_CHATS C
+	   LEFT OUTER JOIN GOOD_REPLIES R
+	       ON C.ID = R.CHAT_ID
 	   LEFT OUTER JOIN USERS UC
-	       ON GC.USER_ID = UC.ID
+	       ON C.USER_ID = UC.ID
 	   LEFT OUTER JOIN USERS UR
-	       ON GR.USER_ID = UR.ID
+	       ON R.USER_ID = UR.ID
+	   LEFT OUTER JOIN GOOD_CHAT_LIKES CL
+	       ON C.ID = CL.CHAT_ID AND CL.USER_ID IS NOT NULL
     </select>
 </mapper>

@@ -4,7 +4,8 @@ public class GoodChatLike {
 	private Integer id;
 	private Integer chatId;
 	private Integer userId;
-	private GoodChat goodChat;
+	private Integer likeCount;
+
 	
 	public Integer getId() {
 		return this.id;
@@ -27,11 +28,10 @@ public class GoodChatLike {
 		this.userId = userId;
 	}
 	
-	
-	public GoodChat getGoodChat() {
-		return this.goodChat;
+	public Integer getLikeCount() {
+		return this.likeCount;
 	}
-	public void setGoodChat(GoodChat goodChat) {
-		this.goodChat = goodChat;
+	public void setLikeCount(Integer likeCount) {
+		this.likeCount = likeCount;
 	}
 }

@@ -1,6 +1,5 @@
 let likeMessageId = 0;
 
-
 function likeAction(messageId, likeData) {    
     const likeDataParent = likeData.parentElement;
     const isActive = likeDataParent.classList.contains("active");
