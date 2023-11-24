@@ -1,72 +1,81 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{layout/main :: main(~{::title}, ~{::body/content()})}">
+    th:replace="~{layout/chats/main :: main(~{::title}, ~{::body/content()})}">
 <head>
-<meta charset="UTF-8">
-<title>Good</title>
+    <meta charset="UTF-8">
+    <title>Good</title>
 </head>
 <body>
     <main>
-        <div class="container py-5">
-            <h1 class="text-center">Good</h1>
-            <div class="chat-wrap">
-                <div class="mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+        <h1 class="text-center">Good</h1>
+        <div id="chat-wrap">
+            <div th:each="goodChat : ${goodChats}" class="chat-content mt-3" th:id="'chat_' + ${goodChat.id}">
+                <div class="d-flex align-items-start">
+                    <div class="me-3">
+                        <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+                    </div>
+                    <div class="chat-content">
+                        <div th:text="${goodChat.chatUser.name}"></div>
+                        <div th:text="${goodChat.message}" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'" class="cursor-pointer"></div>
+                        
+                        <!-- ここでいう10はログインしているユーザーIDのこと -->
+                        <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
+                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                            <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
-                        <div>
-                            <div>user name</div>
-                            <div>
-                                メッセージ内容です。
+                        
+                        <!-- ここでいう10はログインしているユーザーIDのこと -->
+                        <div class="heart-position heart-action" th:unless="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
+                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                            <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mt-2">
+                            <div class="small-font cursor-pointer" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'">
+                                メッセージを返信する
                             </div>
+                            <!-- ここでいう10はログインしているユーザーIDのこと -->
+                            <th:block th:if="${goodChat.id == 10}">
+                                <a href="" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold small-font">削除</a>
+                            </th:block>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
-                        </div>
-                        <div>
-                            <div>user name</div>
-                            <div>
-                                メッセージ内容です。
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
-                <div class="mb-4">
-                    <div class="d-flex align-items-center">
+                
+                <div th:each="goodReply : ${goodChat.goodReplies}" class="reply-content mt-2 ms-5"  th:id="'reply_' + ${goodReply.id}" th:if="${goodReply.id != null}">
+                    <div class="d-flex align-items-start">
                         <div class="me-3">
                             <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
                         </div>
                         <div>
-                            <div>user name</div>
-                            <div>
-                                メッセージ内容です。
+                            <div th:text="${goodReply.replyUser.name}"></div>
+                            <div th:text="${goodReply.message}"></div>
+                            
+                            <!-- ここでいう10はログインしているユーザーIDのこと -->                        
+                            <div class="heart-position heart-action active" th:if="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
+                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
+                            </div>
+                            
+                            <!-- ここでいう10はログインしているユーザーIDのこと -->
+                            <div class="heart-position heart-action" th:unless="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
+                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
+                            </div>
+                            
+                            <div class="d-flex aligin-items-center mt-2">
+                                <div class="small-font">メッセージを返信する</div>
+                                <th:block th:if="${goodReply.id == 10}">
+                                    <a href="" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold small-font">削除</a>
+                                </th:block>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
-            
-            <form>
-                <div class="d-flex">
-                    <div class="pe-2">
-                        <textarea id="story" name="story" rows="1" class="w-100 border border-secondary rounded"></textarea>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-primary">送信</button>
-                    </div>
-                </div>
-            </form>
-            
-
+        </div>
     </main>
 </body>
 </html>
