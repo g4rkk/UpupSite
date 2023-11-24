@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/header.css">
+<link rel="stylesheet" href="css/header.css">
 </head>
 <body>
     <header th:fragment="header" class="header">
         <img src="" alt="ロゴ" class="left element">
         <a href="/main" class="left element">ホーム</a>
-        <a href="/" class="left element">ユーザー</a>
+        <a href="/" class="left element">ユーザー設定</a>
         <a href="/" class="left element">あげあげ運勢</a>
 
-        <a href="/LoginForm" class="right element">ログイン</a>
+        <a href="/loginForm" class="right element">ログイン</a>
 	    <form th:action="@{/logout}" method="post" class="right element">
 	        <input type="submit" value="ログアウト" class="right element"/>
-<!--	        right element-->
 	    </form>
         <a href="/" class="right element">ユーザー登録</a>
     </header>
