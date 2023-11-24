@@ -1,0 +1,25 @@
+
+        .title{
+            display: flex;
+            justify-content: center;
+        }
+        .text{
+            display: flex;
+            justify-content: center;
+        }
+        .main_chat{
+            display: flex;
+            justify-content: center;
+        }
+
+        .child {
+            width: 300px;
+            border: solid;
+            border-radius: 25px;
+            padding: 15px;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+        }

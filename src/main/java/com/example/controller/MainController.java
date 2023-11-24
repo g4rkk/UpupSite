@@ -46,5 +46,21 @@ public class MainController {
     	return "redirect:/item";
     }
     
+//	@PostMapping("/Countgood")
+//	public String hogeAction(@AuthenticationPrincipal LoginUser loginUser) {
+//
+//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+//		System.out.println("user_id: " + loginUser.getUser().getId());
+//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+//	}
+//	
+//	@PostMapping("/Countbad")
+//	public String hogeAction(@AuthenticationPrincipal LoginUser loginUser) {
+//
+//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+//		System.out.println("user_id: " + loginUser.getUser().getId());
+//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+//	}
+    
     
 }

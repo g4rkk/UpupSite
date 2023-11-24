@@ -4,51 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .title{
-            display: flex;
-            justify-content: center;
-        }
-        .text{
-            display: flex;
-            justify-content: center;
-        }
-        .main_chat{
-            display: flex;
-            justify-content: center;
-        }
 
-        .child {
-            width: 300px;
-            border: solid;
-            border-radius: 25px;
-            padding: 15px;
-            padding-left: 50px;
-            padding-right: 50px;
-            margin: auto;
-            margin-top: 50px;
-            text-align: center;
-        }
-    </style>
+    <script>
+
+	</script>
+	<link rel="stylesheet" href="/mainPage.css">
+	<link rel="stylesheet" href="/header.css">
 </head>
 <body>
-    <!-- <header th:replace="~{layout/header :: header}"></header> -->
+     <header th:replace="~{layout/header :: header}"></header> 
     <h1 class="title">あげあげサイト</h1>
     <h3 class="text">サイトの説明</h3>
 
     <div class="main_chat">
         <div class="child">
-            <input type="button" value="GOOD" >
-            <tr th:each="goodchat : ${goodchats}">
-				<td th:text="${goodchat.message}"></td>
-            </tr>
+            <input type="button" value="GOOD" ><br>
+            <table th:each="goodchat : ${goodchats}">
+				<tr th:text="${goodchat.message}"></tr>
+            </table>
         </div>
     
         <div class="child">
             <input type="button" value="BAD" ><br>
-            <tr th:each="badchat : ${badchats}">
-				<td th:text="${badchat.message}"></td><br>
-            </tr>
+            <table th:each="badchat : ${badchats}">
+				<tr th:text="${badchat.message}"></tr>
+            </table>
         </div>     
     </div>
     
