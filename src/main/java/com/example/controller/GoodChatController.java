@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.entity.GoodChat;
 import com.example.form.MessageForm;
 import com.example.service.GoodChatService;
+import com.example.service.LoginUser;
 
 @Controller
 @RequestMapping("/main")
@@ -27,10 +29,14 @@ public class GoodChatController {
 	
 	
 	@GetMapping("/good")
-	public String index(@ModelAttribute MessageForm messageForm, Model model) {
+	public String index(@ModelAttribute MessageForm messageForm, Model model, @AuthenticationPrincipal LoginUser loginUser) {
 		List<GoodChat> goodChats = this.goodChatService.findAll();
 		
 		model.addAttribute("goodChats", goodChats);
+		
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		System.out.println(loginUser.getUser().getId());
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
 		return "chats/good";
 	}
 	
