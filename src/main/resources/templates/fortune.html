@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>あげあげ運勢</title>
+    <link rel="stylesheet" href="/css/FortuneStyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+		
+			<h2>あげあげ運勢</h2>
+	        <div class="chart-container">
+	            <canvas id="fortuneChart"></canvas>
+	        </div>
+	        <button type="submit" onclick="location.reload()">あなたの運勢を更新</button>
+		
+        
+    </div>
+
+    <div id="moneyLuck" style="display: none;" th:text="${moneyLuck}"></div>
+    <div id="workLuck" style="display: none;" th:text="${workLuck}"></div>
+    <div id="loveLuck" style="display: none;" th:text="${loveLuck}"></div>
+
+    <script src="/js/FortuneJavascript.js"></script>
+</body>
+</html>

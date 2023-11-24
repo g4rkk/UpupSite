@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* 设置页面的字体和颜色 */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+/* 内容区域样式 */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* 标题样式 */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* 图表样式 */
+#fortuneChart {
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 图表容器样式 */
+.chart-container {
+    width: 100%;
+    margin: 20px auto;
+}
+
+/* 图表说明样式 */
+.chart-legend {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+}
+
+.chart-legend li {
+    display: flex;
+    align-items: center;
+}
+
+.chart-legend span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+/* 金運颜色 */
+.money-luck {
+    background: rgba(255, 206, 86, 1);
+}
+
+/* 仕事運颜色 */
+.work-luck {
+    background: rgba(75, 192, 192, 1);
+}
+
+/* 恋愛運颜色 */
+.love-luck {
+    background: rgba(153, 102, 255, 1);
+}
+
+/* 调整响应式布局 */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}

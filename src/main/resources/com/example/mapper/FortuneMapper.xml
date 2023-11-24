@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.mapper.FortuneMapper">
+
+    <resultMap type="com.example.entity.Fortune" id="FortuneMap">
+      
+        <id column="ID" property="id"/>
+      
+        <result column="USER_ID" property="userId"/>
+    </resultMap>
+
+
+    <select id="findAll" resultMap="FortuneMap">    
+     SELECT * FROM Fortune
+</select>
+
+    <insert id="insert" parameterType="com.example.entity.Fortune">
+    INSERT INTO Fortune (USER_ID, NAME)
+    VALUES (#{userId}, #{name})
+</insert>
+
+</mapper>

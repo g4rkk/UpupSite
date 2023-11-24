@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: Arial, sans-serif;
 }
@@ -67,3 +68,45 @@ body {
 }
 
 
+.chart {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.bars {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 200px; /* チャートの高さ */
+    margin: 0;
+}
+
+.bar {
+    width: 20%; /* バーの幅 */
+    background-color: #4CAF50; /* バーの色 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: height 0.5s;
+}
+
+.bar span {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-align: center;
+}
+
+.bar::before {
+    content: attr(data-value) '%';
+    margin-bottom: 5px;
+}
+
+/* JavaScriptを使用してバーの高さを動的に設定します */
+.bar[data-value="60"] { height: 60%; }
+.bar[data-value="80"] { height: 80%; }
+.bar[data-value="75"] { height: 75%; }
