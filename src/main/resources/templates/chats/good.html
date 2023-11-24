@@ -20,13 +20,13 @@
                         
                         <!-- ここでいう10はログインしているユーザーIDのこと -->
                         <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
-                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                            <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${goodChat.id} + ', this)'"></div>
                             <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         
                         <!-- ここでいう10はログインしているユーザーIDのこと -->
                         <div class="heart-position heart-action" th:unless="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
-                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                            <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${goodChat.id} + ', this)'"></div>
                             <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         
@@ -55,13 +55,13 @@
                             
                             <!-- ここでいう10はログインしているユーザーIDのこと -->                        
                             <div class="heart-position heart-action active" th:if="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
-                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart cursor-pointer" th:attr="onclick='replyLikeAction(' + ${goodReply.id} + ', this)'"></div>
                                 <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
                             </div>
                             
                             <!-- ここでいう10はログインしているユーザーIDのこと -->
                             <div class="heart-position heart-action" th:unless="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
-                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart cursor-pointer" th:attr="onclick='replyLikeAction(' + ${goodReply.id} + ', this)'"></div>
                                 <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
                             </div>
                             

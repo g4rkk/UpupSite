@@ -109,4 +109,12 @@
             C.ID ASC
             , R.ID ASC
     </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO GOOD_CHATS (
+            ID, USER_ID, MESSAGE, CREATED_AT
+        ) VALUES (
+            GOOD_CHATS_ID_SEQ.nextval, #{userId}, #{message}, #{createdAt}
+        )
+    </insert>
 </mapper>

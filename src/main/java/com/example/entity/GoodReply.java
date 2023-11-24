@@ -16,6 +16,8 @@ public class GoodReply {
 	private List<GoodReplyLike> goodReplyLikes;
 	private Integer goodReplyLikesCount;
 	
+	private Integer loggedUserFlag;
+	
 	
 	public Integer getId() {
 		return this.id;
@@ -88,4 +90,10 @@ public class GoodReply {
 		this.goodReplyLikesCount = goodReplyLikesCount;
 	}
 	
+	public Integer getLoggedUserFlag() {
+		return this.loggedUserFlag;
+	}
+	public void setLoggedUserFlag(Integer loggedUserFlag) {
+		this.loggedUserFlag = loggedUserFlag;
+	}
 }

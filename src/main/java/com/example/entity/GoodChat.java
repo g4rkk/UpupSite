@@ -15,6 +15,8 @@ public class GoodChat {
 	private List<GoodChatLike> goodChatLikes;
 	private Integer goodChatLikesCount;
 	
+	private Integer loggedUserFlag;
+	
 	
 	public Integer getId() {
 		return this.id;
@@ -80,4 +82,10 @@ public class GoodChat {
 		this.goodChatLikesCount = goodChatLikesCount;
 	}
 	
+	public Integer getLoggedUserFlag() {
+		return this.loggedUserFlag;
+	}
+	public void setLoggedUserFlag(Integer loggedUserFlag) {
+		this.loggedUserFlag = loggedUserFlag;
+	}
 }

@@ -45,25 +45,20 @@ function sendChat(messageForm) {
     stompClient.send('/app/main/good/chat', {}, messageForm);
 }
 
-function sendReply(message) {
-    // stompClient.send('/app/main/good/reply', {}, JSON.stringify({ 'content': message, 'messge_id': messageId }));
+function sendReply(messageForm) {
+    stompClient.send('/app/main/good/reply', {}, messageForm);
 }
 
 
 function sendMessage() {
     const form = document.getElementById('form-block');
     const message = document.getElementById('message').value;    
-    
-    /**
-     * 条件分岐をする
-     * 新規メッセージか、返信か？
-     */
-    
+
     if (messageId > 0) {
-        
-        sendReply();
+        var messageForm = { message: message, chatId: messageId };
+        sendReply(JSON.stringify(messageForm));
     } else {
-        const messageForm = { message: message };
+        var messageForm = { message: message };
         sendChat(JSON.stringify(messageForm));
     }
 }
