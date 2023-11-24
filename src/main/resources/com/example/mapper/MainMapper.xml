@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.MainMapper">
+    <resultMap type="com.example.entity.GoodChat" id="mainGoodMap">
+        <id column="ID" property="id"/>
+        <result column="MESSAGE" property="message"/>
+        <result column="createdAt" property="createdAt"/>
+        <result column="deletedAt" property="deletedAt"/>
+    </resultMap>
+    
+    <resultMap type="com.example.entity.BadChat" id="mainBadMap">
+        <id column="ID" property="id"/>
+        <result column="MESSAGE" property="message"/>
+        <result column="createdAt" property="createdAt"/>
+        <result column="deletedAt" property="deletedAt"/>
+    </resultMap>
+
+    <select id="findGoodchatRandom" resultMap="mainGoodMap">
+<!--       SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[<=]]> 10-->
+       SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY ID DESC) WHERE ROWNUM <![CDATA[<=]]> 10
+    </select>
+
+    <select id="findBadchatRandom" resultMap="mainBadMap">
+       SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY ID DESC) WHERE ROWNUM <![CDATA[<=]]> 10
+    </select>
+    
+    <update id="choise_good_update">
+        UPDATE USERS SET CHOISE_GOOD = CHOISE_GOOD + 1 WHERE id = #{id}
+    </update>
+    
+    <update id="choise_bad_update">
+        UPDATE USERS SET CHOISE_BAD = CHOISE_BAD + 1 WHERE id = #{id}
+    </update>
+</mapper>
