@@ -3,9 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
-
-
  <resultMap type="com.example.entity.User" id="userMap">
+    <resultMap type="com.example.entity.User" id="userMap">
         <id column="ID" property="id"/>
         <result column="EMAIL" property="email"/>
         <result column="PASSWORD" property="password"/>
@@ -28,7 +27,7 @@
         WHERE
             EMAIL = #{email}
     </select>
-    
+
     <update id="updateFortune">
         UPDATE
         USERS

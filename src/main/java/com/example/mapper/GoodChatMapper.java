@@ -10,3 +10,4 @@ import com.example.entity.GoodChat;
 public interface GoodChatMapper {
 	public List<GoodChat> findAll();
 }
+

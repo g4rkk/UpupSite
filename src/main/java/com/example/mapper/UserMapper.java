@@ -7,6 +7,7 @@ import com.example.entity.User;
 
 @Mapper
 public interface UserMapper {
+    
     User findByEmail(@Param("email") String email);
     
     void updateFortune(User user);

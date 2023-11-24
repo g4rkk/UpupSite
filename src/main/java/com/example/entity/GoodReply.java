@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class GoodReply {
 	private Integer id;
@@ -10,6 +11,11 @@ public class GoodReply {
 	private LocalDateTime createdAt;
 	private LocalDateTime deletedAt;
 	private GoodChat goodChat;
+	private User replyUser;
+	
+	private List<GoodReplyLike> goodReplyLikes;
+	private Integer goodReplyLikesCount;
+	
 	
 	public Integer getId() {
 		return this.id;
@@ -60,4 +66,26 @@ public class GoodReply {
 	public void setGoodChat(GoodChat goodChat) {
 		this.goodChat = goodChat;
 	}
+	
+	public User getReplyUser() {
+		return this.replyUser;
+	}
+	public void setReplyUser(User replyUser) {
+		this.replyUser = replyUser;
+	}
+	
+	public List<GoodReplyLike> getGoodReplyLikes() {
+		return this.goodReplyLikes;
+	}
+	public void setGoodReplyLikes(List<GoodReplyLike> goodReplyLikes) {
+		this.goodReplyLikes = goodReplyLikes;
+	}
+	
+	public Integer getGoodReplyLikesCount() {
+		return this.goodReplyLikesCount;
+	}
+	public void setGoodReplyLikesCount(Integer goodReplyLikesCount) {
+		this.goodReplyLikesCount = goodReplyLikesCount;
+	}
+	
 }
