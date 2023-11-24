@@ -10,5 +10,6 @@ import com.example.entity.Fortune;
 public interface FortuneMapper {
 
     public List<Fortune> findAll();
+    int insert(Fortune fortune);
 
 }

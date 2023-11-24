@@ -28,6 +28,8 @@ public class FortuneController {
         model.addAttribute("moneyLuck", MONEY);
         model.addAttribute("workLuck", JOB);
         model.addAttribute("loveLuck", LOVE);
+        
+        this.fortuneService.update(2, MONEY, JOB, LOVE);
 
         return "fortune";
     }
@@ -35,4 +37,7 @@ public class FortuneController {
 	public FortuneService getFortuneService() {
 		return fortuneService;
 	}
+	
+
+	
 }

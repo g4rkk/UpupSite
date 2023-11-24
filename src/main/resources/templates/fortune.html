@@ -8,11 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <h2>あげあげ運勢</h2>
-        <div class="chart-container">
-            <canvas id="fortuneChart"></canvas>
-        </div>
-        <button onclick="location.reload()">あなたの運勢を更新</button>
+		
+			<h2>あげあげ運勢</h2>
+	        <div class="chart-container">
+	            <canvas id="fortuneChart"></canvas>
+	        </div>
+	        <button type="submit" onclick="location.reload()">あなたの運勢を更新</button>
+		
+        
     </div>
 
     <div id="moneyLuck" style="display: none;" th:text="${moneyLuck}"></div>

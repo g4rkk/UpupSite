@@ -15,8 +15,13 @@
     </resultMap>
 
 
-    <select id="findAll" resultMap="goodChatMap">    
+    <select id="findAll" resultMap="FortuneMap">    
+     SELECT * FROM Fortune
+</select>
 
-         SELECT * FROM Fortune
-        </select>
+    <insert id="insert" parameterType="com.example.entity.Fortune">
+    INSERT INTO Fortune (USER_ID, NAME)
+    VALUES (#{userId}, #{name})
+</insert>
+
 </mapper>
