@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+    <resultMap type="com.example.entity.User" id="userMap">
+        <id column="ID" property="id"/>
+        <result column="EMAIL" property="email"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="NAME" property="name"/>
+        <result column="CHOISE_GOOD" property="choiseGood"/>
+        <result column="CHOISE_BAD" property="choiseBad"/>
+        <result column="BIRTHDAY" property="birthday"/>
+        <result column="IMAGE" property="image"/>
+        <result column="MONEY" property="money"/>
+        <result column="JOB" property="job"/>
+        <result column="LOVE" property="love"/>
+        <result column="MOTIVATION" property="motivation"/>
+    </resultMap>
+    
+    <select id="findByEmail" resultMap="userMap">
+        SELECT
+            *
+        FROM
+            USERS
+        WHERE
+            EMAIL = #{email}
+    </select>
+
+    <update id="updateFortune">
+        UPDATE
+        USERS
+        SET 
+        MONEY = #{money}, JOB = #{job}, LOVE = #{love}
+        WHERE
+        ID = #{id}           
+    </update>
+</mapper>

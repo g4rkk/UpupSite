@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+.chat-form {
+    width: 85%;
+}
+.chat-post {
+    width: 15%;
+}
+.chat-post button {
+    min-width: 60px;
+}
+
+#form-style {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 80px;
+    background-color: #fff;
+    box-shadow: 0px -2px 15px -5px #777777;
+}
+#form-block {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+.round_btn {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: red;
+}
+ 
+.round_btn::before, .round_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 11px;
+  background: #fff;
+}
+ 
+.round_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+ 
+.round_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+
+
+
+.click-action {
+    display: none;
+}
+.click-action.active {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.small-font {
+    font-size: .7em;
+}
+
+
+.heart-position {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+}
+.heart {
+  position: absolute;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+}
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  background: gray;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart-action.active .heart:before,
+.heart-action.active .heart:after {
+  background: red;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin :100% 100%;
+}
+
+
+.heart-action .heart-count {
+    font-size: .8em;
+    color: gray;
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 23px;
+}
+.heart-action.active .heart-count {
+    color: red;
+}
