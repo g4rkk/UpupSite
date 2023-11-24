@@ -6,10 +6,10 @@ function chatLikeAction(messageId, likeData) {
     
     if (isActive) {
         likeDataParent.classList.remove("active");
-        deleteChatLike(messageId);
+        deleteChatLike(messageId, likeDataParent);
     } else {
         likeDataParent.classList.add("active");
-        addChatLike(messageId);
+        addChatLike(messageId, likeDataParent);
     }
 }
 
@@ -19,9 +19,9 @@ function replyLikeAction(messageId, likeData) {
     
     if (isActive) {
         likeDataParent.classList.remove("active");
-        deleteReplyLike(messageId);
+        deleteReplyLike(messageId, likeDataParent);
     } else {
         likeDataParent.classList.add("active");
-        addReplyLike(messageId);
+        addReplyLike(messageId, likeDataParent);
     }
 }

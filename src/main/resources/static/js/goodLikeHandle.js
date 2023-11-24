@@ -1,4 +1,4 @@
-function addChatLike(messageId) {
+function addChatLike(messageId, likeDataParent) {
     fetch('/main/good/chat/like/add', {
         method: "POST",
         headers: {
@@ -17,11 +17,13 @@ function addChatLike(messageId) {
     })
     .then(data => {
         var responseString = JSON.stringify(data);
-        console.log(responseString);
+        var heartCountElement = likeDataParent.querySelector(".heart-count");
+        var updateHeartCount = parseInt(heartCountElement.textContent) + 1;
+        heartCountElement.textContent = updateHeartCount;
     })
 }
 
-function deleteChatLike(messageId) {
+function deleteChatLike(messageId, likeDataParent) {
     fetch('/main/good/chat/like/delete', {
         method: "POST",
         headers: {
@@ -40,11 +42,13 @@ function deleteChatLike(messageId) {
     })
     .then(data => {
         var responseString = JSON.stringify(data);
-        console.log(responseString);
+        var heartCountElement = likeDataParent.querySelector(".heart-count");
+        var updateHeartCount = parseInt(heartCountElement.textContent) - 1;
+        heartCountElement.textContent = updateHeartCount;
     })
 }
 
-function addReplyLike(messageId) {
+function addReplyLike(messageId, likeDataParent) {
     fetch('/main/good/reply/like/add', {
         method: "POST",
         headers: {
@@ -63,11 +67,13 @@ function addReplyLike(messageId) {
     })
     .then(data => {
         var responseString = JSON.stringify(data);
-        console.log(responseString);
+        var heartCountElement = likeDataParent.querySelector(".heart-count");
+        var updateHeartCount = parseInt(heartCountElement.textContent) + 1;
+        heartCountElement.textContent = updateHeartCount;
     })
 }
 
-function deleteReplyLike(messageId) {
+function deleteReplyLike(messageId, likeDataParent) {
     fetch('/main/good/reply/like/delete', {
         method: "POST",
         headers: {
@@ -86,6 +92,8 @@ function deleteReplyLike(messageId) {
     })
     .then(data => {
         var responseString = JSON.stringify(data);
-        console.log(responseString);
+        var heartCountElement = likeDataParent.querySelector(".heart-count");
+        var updateHeartCount = parseInt(heartCountElement.textContent) - 1;
+        heartCountElement.textContent = updateHeartCount;
     })
 }
