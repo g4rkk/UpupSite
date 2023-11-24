@@ -68,10 +68,8 @@ public class GoodChatController {
 		 */
 		return message;
 	}
-	
-	
-	
-	
+
+
 	/**
 	 * 
 	 * @param messageForm
