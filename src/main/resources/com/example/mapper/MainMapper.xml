@@ -19,11 +19,11 @@
 
     <select id="findGoodchatRandom" resultMap="mainGoodMap">
 <!--       SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[<=]]> 10-->
-       SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY ID DESC) WHERE ROWNUM <![CDATA[<=]]> 5
+       SELECT * FROM (SELECT * FROM GOOD_CHATS ORDER BY ID DESC) WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
 
     <select id="findBadchatRandom" resultMap="mainBadMap">
-       SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM <![CDATA[<=]]> 10
+       SELECT * FROM (SELECT * FROM BAD_CHATS ORDER BY ID DESC) WHERE ROWNUM <![CDATA[<=]]> 10
     </select>
     
     <update id="choise_good_update">
