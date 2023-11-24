@@ -60,7 +60,6 @@
             <result column="CL_CHAT_ID" property="chatId"/>
             <result column="CL_USER_ID" property="userId"/>
         </collection>
-        
     </resultMap>
     
     <select id="findAll" resultMap="goodChatMap">

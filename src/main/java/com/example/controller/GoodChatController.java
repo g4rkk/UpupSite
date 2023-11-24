@@ -48,6 +48,7 @@ public class GoodChatController {
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
 		
 		/**
+		 * 時間があればバリデーションとして
 		 * 条件分岐でログインユーザーと、登録したメッセージのユーザーIDが一致した場合は
 		 * messageForm.setLoggedUserFlag(1);
 		 * 

@@ -28,7 +28,7 @@
     -ms-transform: translateX(-50%);
 }
 
-.chat-content {
+.cursor-pointer {
     cursor: pointer;
 }
 
@@ -38,8 +38,8 @@
   position: relative;
   width: 18px;
   height: 18px;
-  border-radius: 50%;  /* 丸みの度合い */
-  background: red; /* ボタンの背景色 */
+  border-radius: 50%;
+  background: red;
 }
  
 .round_btn::before, .round_btn::after {
@@ -49,7 +49,7 @@
   left: 50%;
   width: 2px;
   height: 11px;
-  background: #fff; /* バツ印の色 */
+  background: #fff;
 }
  
 .round_btn::before {

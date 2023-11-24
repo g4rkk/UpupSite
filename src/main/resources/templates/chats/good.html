@@ -16,22 +16,22 @@
                     </div>
                     <div class="chat-content">
                         <div th:text="${goodChat.chatUser.name}"></div>
-                        <div th:text="${goodChat.message}" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'"></div>
+                        <div th:text="${goodChat.message}" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'" class="cursor-pointer"></div>
                         
                         <!-- ここでいう10はログインしているユーザーIDのこと -->
                         <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
-                            <div class="heart" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
                             <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         
                         <!-- ここでいう10はログインしているユーザーIDのこと -->
                         <div class="heart-position heart-action" th:unless="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
-                            <div class="heart" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
                             <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         
                         <div class="d-flex align-items-center mt-2">
-                            <div class="small-font" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'">
+                            <div class="small-font cursor-pointer" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'">
                                 メッセージを返信する
                             </div>
                             <!-- ここでいう10はログインしているユーザーIDのこと -->
@@ -55,13 +55,13 @@
                             
                             <!-- ここでいう10はログインしているユーザーIDのこと -->                        
                             <div class="heart-position heart-action active" th:if="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
-                                <div class="heart" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
                                 <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
                             </div>
                             
                             <!-- ここでいう10はログインしているユーザーIDのこと -->
                             <div class="heart-position heart-action" th:unless="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
-                                <div class="heart" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
                                 <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
                             </div>
                             
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
         </div>
     </main>
 </body>
