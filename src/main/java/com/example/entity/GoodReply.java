@@ -16,7 +16,8 @@ public class GoodReply {
 	private List<GoodReplyLike> goodReplyLikes;
 	private Integer goodReplyLikesCount;
 	
-	private Integer loggedUserFlag;
+	private String typeMessage;
+	private String name;
 	
 	
 	public Integer getId() {
@@ -90,10 +91,17 @@ public class GoodReply {
 		this.goodReplyLikesCount = goodReplyLikesCount;
 	}
 	
-	public Integer getLoggedUserFlag() {
-		return this.loggedUserFlag;
+	public String getTypeMessage() {
+		return this.typeMessage;
 	}
-	public void setLoggedUserFlag(Integer loggedUserFlag) {
-		this.loggedUserFlag = loggedUserFlag;
+	public void setTypeMessage(String typeMessage) {
+		this.typeMessage = typeMessage;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

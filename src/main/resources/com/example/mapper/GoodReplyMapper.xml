@@ -34,4 +34,23 @@
             GOOD_REPLIES_ID_SEQ.nextval, #{userId}, #{chatId}, #{message}, #{createdAt}
         )
     </insert>
+    
+    <update id="softDelete">
+        UPDATE
+            GOOD_REPLIES
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            ID = #{id}
+    </update>
+    
+    <update id="cascadeReplySoftDelete">
+        UPDATE
+            GOOD_REPLIES
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            CHAT_ID = #{id}
+            AND DELETED_AT IS NULL
+    </update>
 </mapper>

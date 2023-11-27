@@ -20,24 +20,50 @@
         <!--
             GoodかBadかで条件分岐をする
         -->
-        <div id="form-style" class="w-100 d-inline-block">
-            <form id="form-block" class="container flex-shrink-1" th:object="${messageForm}" th:action="@{/main/good/message}" method="POST">
-                <div class="click-action">
-                    <div id="clicked-name" class="me-2"></div>
-                    <span class="round_btn" onclick="closeAction()"></span>
-                </div>
-                <div class="d-flex mt-2 w-100">
-                    <div class="pe-2 chat-form">
-                        <textarea th:field="*{message}" class="form-control" rows="1" oninput="autoresize()"></textarea>
+        <th:block th:if="${goodChats}">
+            <div id="form-style" class="w-100 d-inline-block">
+                <form id="form-block" class="container flex-shrink-1" th:object="${messageForm}" th:action="@{/main/good/message}" method="POST">
+                    <div class="click-action">
+                        <div id="clicked-name" class="me-2"></div>
+                        <span class="round_btn" onclick="closeAction()"></span>
                     </div>
-                    <div class="d-flex align-items-end chat-post">
-                         <button type="button" class="btn btn-primary w-100" onclick="sendMessage()">送信</button>
+                    <div class="d-flex mt-2 w-100">
+                        <div class="pe-2 chat-form">
+                            <textarea th:field="*{message}" class="form-control" rows="1" oninput="autoresize()" placeholder="メッセージを入力"></textarea>
+                        </div>
+                        <div class="d-flex align-items-end chat-post">
+                             <button type="button" class="btn btn-primary w-100" onclick="sendMessage()">送信</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        </th:block>
+        
+        <th:block th:if="${badChats}">
+            <div id="form-style" class="w-100 d-inline-block">
+                <form id="form-block" class="container flex-shrink-1" th:object="${messageForm}" th:action="@{/main/bad/message}" method="POST">
+                    <div class="click-action">
+                        <div id="clicked-name" class="me-2"></div>
+                        <span class="round_btn" onclick="closeAction()"></span>
+                    </div>
+                    <div class="d-flex mt-2 w-100">
+                        <div class="pe-2 chat-form">
+                            <textarea th:field="*{message}" class="form-control" rows="1" oninput="autoresize()" placeholder="メッセージを入力"></textarea>
+                        </div>
+                        <div class="d-flex align-items-end chat-post">
+                             <button type="button" class="btn btn-primary w-100" onclick="sendMessage()">送信</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </th:block>
+        
         
     </div>
+    
+    <script th:inline="javascript">
+        const loginUserId = /*[[${loginUserId}]]*/"loginUserId";
+    </script>
     
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
@@ -46,8 +72,16 @@
     <!--
         GoodかBadでjsファイルを変更する(条件分岐)
     -->
-    <script defer th:src="@{/js/goodLikeHandle.js}"></script>
-    <script defer th:src="@{/js/goodLikeAction.js}"></script>
-    <script defer th:src="@{/js/goodChat.js}"></script>
+    <th:block th:if="${goodChats}">
+        <script defer th:src="@{/js/goodLikeHandle.js}"></script>
+        <script defer th:src="@{/js/goodLikeAction.js}"></script>
+        <script defer th:src="@{/js/goodDeleteHandle.js}"></script>
+        <script defer th:src="@{/js/goodDeleteAction.js}"></script>
+        <script defer th:src="@{/js/goodChat.js}"></script>
+    </th:block>
+    
+    <th:block th:if="${badChats}">
+        
+    </th:block>
 </body>
 </html>

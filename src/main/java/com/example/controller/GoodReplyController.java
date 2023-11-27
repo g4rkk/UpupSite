@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entity.GoodReply;
+import com.example.form.DeleteForm;
 import com.example.form.MessageForm;
 import com.example.service.GoodReplyService;
 import com.example.service.LoginUser;
@@ -32,13 +33,19 @@ public class GoodReplyController {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
 		GoodReply insertGoodReplyData = this.goodReplyService.insert(messageForm, loginUser);
-		
-		if (loginUser.getUser().getId() == insertGoodReplyData.getUserId()) {
-			insertGoodReplyData.setLoggedUserFlag(1);
-		} else {
-			insertGoodReplyData.setLoggedUserFlag(0);
-		}
+		insertGoodReplyData.setTypeMessage("reply");
 		
 		return insertGoodReplyData;
+	}
+	
+	@MessageMapping("/main/good/reply/delete")
+	@SendTo("/topic/deleteMessage")
+	public GoodReply replyDelete(DeleteForm deleteForm, Principal principal) {
+		
+		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
+		GoodReply softDeleteData = this.goodReplyService.softDelete(deleteForm, loginUser);
+		softDeleteData.setTypeMessage("reply");
+		
+		return softDeleteData;
 	}
 }

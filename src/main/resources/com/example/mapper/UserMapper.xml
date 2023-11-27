@@ -35,4 +35,13 @@
         WHERE
         ID = #{id}           
     </update>
+    
+    <select id="findByUserId" resultMap="userMap">
+        SELECT
+            *
+        FROM
+            USERS
+        WHERE
+            ID = #{user_id}
+    </select>
 </mapper>
