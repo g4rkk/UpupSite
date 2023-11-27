@@ -18,14 +18,16 @@
 
     <div class="main_chat">
         <div class="child">
-            <input type="button" value="GOOD" ><br>
+			<a href="/main/countGood" >GOOD</a>
+            <br>
             <table th:each="goodchat : ${goodchats}">
 				<tr th:text="${goodchat.message}"></tr>
             </table>
         </div>
     
         <div class="child">
-            <input type="button" value="BAD" ><br>
+            <a href="/main/countBad" >GOOD</a>
+            <br>
             <table th:each="badchat : ${badchats}">
 				<tr th:text="${badchat.message}"></tr>
             </table>

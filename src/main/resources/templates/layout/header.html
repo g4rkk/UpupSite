@@ -9,8 +9,8 @@
     <header th:fragment="header" class="header">
         <img src="" alt="ロゴ" class="left element">
         <a href="/main" class="left element">ホーム</a>
-        <a href="/" class="left element">ユーザー設定</a>
-        <a href="/" class="left element">あげあげ運勢</a>
+        <a href="/profile/{id}" class="left element">ユーザー</a>
+        <a href="/fortune" class="left element">あげあげ運勢</a>
 
         <a href="/loginForm" class="right element">ログイン</a>
 	    <form th:action="@{/logout}" method="post" class="right element">
