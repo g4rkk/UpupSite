@@ -15,6 +15,9 @@ public class GoodChat {
 	private List<GoodChatLike> goodChatLikes;
 	private Integer goodChatLikesCount;
 	
+	private String typeMessage;
+	private String name;
+	
 	
 	public Integer getId() {
 		return this.id;
@@ -80,4 +83,17 @@ public class GoodChat {
 		this.goodChatLikesCount = goodChatLikesCount;
 	}
 	
+	public String getTypeMessage() {
+		return this.typeMessage;
+	}
+	public void setTypeMessage(String typeMessage) {
+		this.typeMessage = typeMessage;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }

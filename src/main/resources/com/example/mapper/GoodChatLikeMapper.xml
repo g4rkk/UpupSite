@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.GoodChatLikeMapper">
+    <resultMap type="com.example.entity.GoodChatLike" id="goodChatLikeMap">
+        <id column="ID" property="id"/>
+        <result column="CHAT_ID" property="chatId"/>
+        <result column="USER_ID" property="userId"/>
+    </resultMap>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO GOOD_CHAT_LIKES (
+            ID, CHAT_ID, USER_ID
+        ) VALUES (
+            GOOD_CHAT_LIKES_ID_SEQ.nextval, #{chatId}, #{userId}
+        )
+    </insert>
+    
+    <delete id="delete">
+        DELETE FROM GOOD_CHAT_LIKES
+        WHERE
+            CHAT_ID = #{chatId} AND USER_ID = #{userId}
+    </delete>
+</mapper>

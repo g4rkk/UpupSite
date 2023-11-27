@@ -1,9 +1,36 @@
 package com.example.form;
 
+import java.time.LocalDateTime;
+
 public class MessageForm {
  
+	private Integer id;
+	private Integer userId;
+	private Integer chatId;
 	private String message;
-	private Integer loggedUserFlag;
+	private LocalDateTime createdAt;
+	
+	
+	public Integer getId() {
+		return this.id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public Integer getUserId() {
+		return this.userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
+	public Integer getChatId() {
+		return this.chatId;
+	}
+	public void setChatId(Integer chatId) {
+		this.chatId = chatId;
+	}
 	
 	public String getMessage() {
 		return this.message;
@@ -12,10 +39,10 @@ public class MessageForm {
 		this.message = message;
 	}
 	
-	public Integer getLoggedUserFlag() {
-		return this.loggedUserFlag;
+	public LocalDateTime getCreatedAt() {
+		return this.createdAt;
 	}
-	public void setLoggedUserFlag(Integer loggedUserFlag) {
-		this.loggedUserFlag = loggedUserFlag;
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
 }

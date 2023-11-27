@@ -25,7 +25,32 @@
             <result column="UC_LOVE" property="love"/>
             <result column="UC_MOTIVATION" property="motivation"/>
         </association>
-        
-        
     </resultMap>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO GOOD_REPLIES (
+            ID, USER_ID, CHAT_ID, MESSAGE, CREATED_AT
+        ) VALUES (
+            GOOD_REPLIES_ID_SEQ.nextval, #{userId}, #{chatId}, #{message}, #{createdAt}
+        )
+    </insert>
+    
+    <update id="softDelete">
+        UPDATE
+            GOOD_REPLIES
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            ID = #{id}
+    </update>
+    
+    <update id="cascadeReplySoftDelete">
+        UPDATE
+            GOOD_REPLIES
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            CHAT_ID = #{id}
+            AND DELETED_AT IS NULL
+    </update>
 </mapper>

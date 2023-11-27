@@ -14,29 +14,26 @@
                     <div class="me-3">
                         <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
                     </div>
-                    <div class="chat-content">
+                    <div>
                         <div th:text="${goodChat.chatUser.name}"></div>
                         <div th:text="${goodChat.message}" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'" class="cursor-pointer"></div>
                         
-                        <!-- ここでいう10はログインしているユーザーIDのこと -->
-                        <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
-                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                        <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], #authentication.principal.user.id)}">
+                            <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${goodChat.id} + ', this)'"></div>
                             <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         
-                        <!-- ここでいう10はログインしているユーザーIDのこと -->
-                        <div class="heart-position heart-action" th:unless="${#lists.contains(goodChat.goodChatLikes.![userId], 10)}">
-                            <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodChat.id} + ', this)'"></div>
+                        <div class="heart-position heart-action" th:unless="${#lists.contains(goodChat.goodChatLikes.![userId], #authentication.principal.user.id)}">
+                            <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${goodChat.id} + ', this)'"></div>
                             <div class="heart-count" th:text="${goodChat.goodChatLikesCount}"></div>
                         </div>
                         
-                        <div class="d-flex align-items-center mt-2">
+                        <div class="d-flex align-items-center mt-2 aligin-delete">
                             <div class="small-font cursor-pointer" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'">
                                 メッセージを返信する
                             </div>
-                            <!-- ここでいう10はログインしているユーザーIDのこと -->
-                            <th:block th:if="${goodChat.id == 10}">
-                                <a href="" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold small-font">削除</a>
+                            <th:block th:if="${goodChat.userId == #authentication.principal.user.id}">
+                                <a href="javascript:void(0)" th:onclick="|chatDeleteAction(this)|" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold delete-font">削除</a>
                             </th:block>
                         </div>
                     </div>
@@ -55,20 +52,20 @@
                             
                             <!-- ここでいう10はログインしているユーザーIDのこと -->                        
                             <div class="heart-position heart-action active" th:if="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
-                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart cursor-pointer" th:attr="onclick='replyLikeAction(' + ${goodReply.id} + ', this)'"></div>
                                 <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
                             </div>
                             
                             <!-- ここでいう10はログインしているユーザーIDのこと -->
                             <div class="heart-position heart-action" th:unless="${#lists.contains(goodReply.goodReplyLikes.![userId], 10)}">
-                                <div class="heart cursor-pointer" th:attr="onclick='likeAction(' + ${goodReply.id} + ', this)'"></div>
+                                <div class="heart cursor-pointer" th:attr="onclick='replyLikeAction(' + ${goodReply.id} + ', this)'"></div>
                                 <div class="heart-count" th:text="${goodReply.goodReplyLikesCount}"></div>
                             </div>
                             
-                            <div class="d-flex aligin-items-center mt-2">
+                            <div class="d-flex align-items-center mt-2 aligin-delete">
                                 <div class="small-font">メッセージを返信する</div>
-                                <th:block th:if="${goodReply.id == 10}">
-                                    <a href="" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold small-font">削除</a>
+                                <th:block th:if="${goodReply.userId == #authentication.principal.user.id}">
+                                    <a href="javascript:void(0)" th:onclick="|replyDeleteAction(this)|" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold delete-font">削除</a>
                                 </th:block>
                             </div>
                         </div>

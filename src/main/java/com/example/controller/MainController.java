@@ -3,14 +3,15 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entity.BadChat;
 import com.example.entity.GoodChat;
+import com.example.service.LoginUser;
 import com.example.service.MainService;
 
 @Controller
@@ -34,33 +35,29 @@ public class MainController {
         return "/chats/mainPage";
     }
     
-    @PostMapping("/goodCount")
-    public String goodCount(Integer id) {
-    	this.mainService.choise_good_update(id);
-    	return "redirect:/item";
+//    @PostMapping("/goodCount")
+//    public String goodCount(Integer id) {
+//    	this.mainService.choise_good_update(id);
+//    	return "redirect:/item";
+//    }
+    
+    @GetMapping("/countGood")
+    public String goodCount(@AuthenticationPrincipal LoginUser loginUser) {
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		System.out.println("user_id: " + loginUser.getUser().getId());
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+    	this.mainService.choise_good_update(loginUser.getUser().getId());
+    	return "redirect:/main/good";
     }
     
-    @PostMapping("/badCount")
-    public String badCount(Integer id) {
-    	this.mainService.choise_bad_update(id);
-    	return "redirect:/item";
+    @GetMapping("/countBad")
+    public String badCount(@AuthenticationPrincipal LoginUser loginUser) {
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		System.out.println("user_id: " + loginUser.getUser().getId());
+		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+    	this.mainService.choise_bad_update(loginUser.getUser().getId());
+    	return "redirect:/main/bad";
     }
-    
-//	@PostMapping("/Countgood")
-//	public String hogeAction(@AuthenticationPrincipal LoginUser loginUser) {
-//
-//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-//		System.out.println("user_id: " + loginUser.getUser().getId());
-//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-//	}
-//	
-//	@PostMapping("/Countbad")
-//	public String hogeAction(@AuthenticationPrincipal LoginUser loginUser) {
-//
-//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-//		System.out.println("user_id: " + loginUser.getUser().getId());
-//		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-//	}
     
     
 }
