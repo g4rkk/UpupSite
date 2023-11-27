@@ -11,5 +11,9 @@ public interface UserMapper {
     User findByEmail(@Param("email") String email);
     
     void updateFortune(User user);
+    
+    User findById(Integer id);
+    
+    public void update(Integer id, String name,String image,String motivation);
 
 }

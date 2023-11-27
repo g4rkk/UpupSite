@@ -14,18 +14,22 @@
 <body>
      <header th:replace="~{layout/header :: header}"></header> 
     <h1 class="title">あげあげサイト</h1>
-    <h3 class="text">サイトの説明</h3>
+    <h5 class="text">
+		このサイトはユーザーを明るい気持ちにすることを目的にしたサイトです!<br>まずはあなたの気持ちを教えてください!(GOOD/BADの選択回数は記録されます)
+	</h5>
 
     <div class="main_chat">
         <div class="child">
-            <input type="button" value="GOOD" ><br>
+			<a href="/main/countGood" >GOOD</a>
+            <br>
             <table th:each="goodchat : ${goodchats}">
 				<tr th:text="${goodchat.message}"></tr>
             </table>
         </div>
     
         <div class="child">
-            <input type="button" value="BAD" ><br>
+            <a href="/main/countBad" >BAD</a>
+            <br>
             <table th:each="badchat : ${badchats}">
 				<tr th:text="${badchat.message}"></tr>
             </table>
