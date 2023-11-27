@@ -12,6 +12,8 @@ public interface UserMapper {
     
     void updateFortune(User user);
     
+    void insertUser(User user);
+
     User findById(Integer id);
     
     public void update(Integer id, String name,String image,String motivation);

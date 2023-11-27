@@ -36,6 +36,10 @@
         ID = #{id}           
     </update>
     
+    <insert id="insertUser" parameterType="com.example.model.User">
+        INSERT INTO USERS (ID, EMAIL, PASSWORD, NAME, CHOICE_GOOD, CHOICE_BAD, BIRTHDAY, IMAGE, MONEY, JOB, LOVE, MOTIVATION)
+        VALUES (#{id}, #{email}, #{password}, #{name}, #{choiceGood}, #{choiceBad}, #{birthday}, #{image}, #{money}, #{job}, #{love}, #{motivation})
+    </insert>
 
   	<select id="findById" resultMap="userMap">
   	 	SELECT * FROM USERS WHERE ID = #{id}
@@ -53,4 +57,5 @@
         WHERE
             ID = #{user_id}
     </select>
+
 </mapper>
