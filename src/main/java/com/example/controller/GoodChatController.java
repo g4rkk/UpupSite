@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,78 +14,54 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entity.GoodChat;
+import com.example.form.DeleteForm;
 import com.example.form.MessageForm;
 import com.example.service.GoodChatService;
 import com.example.service.LoginUser;
+import com.example.service.LoginUserPrincipalService;
 
 @Controller
 @RequestMapping("/main")
 public class GoodChatController {
 	private final GoodChatService goodChatService;
+	private final LoginUserPrincipalService loginUserPrincipalService;
 	
 	@Autowired
-	public GoodChatController(GoodChatService goodChatService) { 
+	public GoodChatController(GoodChatService goodChatService, LoginUserPrincipalService loginUserPrincipalService) { 
 		this.goodChatService = goodChatService;
+		this.loginUserPrincipalService = loginUserPrincipalService;
 	}
 	
 	
 	@GetMapping("/good")
 	public String index(@ModelAttribute MessageForm messageForm, Model model, @AuthenticationPrincipal LoginUser loginUser) {
 		List<GoodChat> goodChats = this.goodChatService.findAll();
-		
 		model.addAttribute("goodChats", goodChats);
-		
-		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-		System.out.println(loginUser.getUser().getId());
-		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		model.addAttribute("loginUserId", loginUser.getUser().getId());
+
 		return "chats/good";
 	}
 	
 	@MessageMapping("/main/good/chat")
 	@SendTo("/topic/messages")
-	public MessageForm sendChatMessage(MessageForm messageForm) {
-		/**
-		 * 
-		 * ここにDBの処理を書く
-		 * 
-		 */
+	public GoodChat sendChatMessage(MessageForm messageForm, Principal principal) {
 		
-		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-		System.out.println(messageForm.getMessage());
-		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
+		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
+		GoodChat insertGoodChatData = this.goodChatService.insert(messageForm, loginUser);
+		insertGoodChatData.setTypeMessage("chat");
 		
-		/**
-		 * 時間があればバリデーションとして
-		 * 条件分岐でログインユーザーと、登録したメッセージのユーザーIDが一致した場合は
-		 * messageForm.setLoggedUserFlag(1);
-		 * 
-		 * 一致しない場合は
-		 * messageForm.setLoggedUserFlag(0);
-		 */
-		
-		messageForm.setLoggedUserFlag(0);
-		return messageForm;
+		return insertGoodChatData;
 	}
 	
-	@MessageMapping("/main/good/reply")
-	@SendTo("/topic/messages")
-	public String sendReplyMessage(String message) {
-		/**
-		 * ここに返信に必要なDB処理
-		 */
-		return message;
+	@MessageMapping("/main/good/chat/delete")
+	@SendTo("/topic/deleteMessage")
+	public GoodChat chatDelete(DeleteForm deleteForm, Principal principal) {
+		
+		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
+		GoodChat softDeleteData = this.goodChatService.softDelete(deleteForm, loginUser);
+		softDeleteData.setTypeMessage("chat");
+		
+		return softDeleteData;
 	}
-
-
-	/**
-	 * 
-	 * @param messageForm
-	@PostMapping("/good/message")
-	public void message(@ModelAttribute MessageForm messageForm) {
-		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-		System.out.println(messageForm.getMessage());
-		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-	}
-	 */
 }
 

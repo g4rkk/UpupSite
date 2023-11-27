@@ -15,4 +15,5 @@ public interface UserMapper {
     User findById(Integer id);
     
     public void update(Integer id, String name,String image,String motivation);
+
 }

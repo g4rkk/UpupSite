@@ -105,8 +105,28 @@
 	       ON C.ID = CL.CHAT_ID
 	   LEFT OUTER JOIN GOOD_REPLY_LIKES RL
 	       ON R.ID = RL.REPLY_ID
+	   WHERE
+	       C.DELETED_AT IS NULL
+	       AND R.DELETED_AT IS NULL
 	   ORDER BY
             C.ID ASC
             , R.ID ASC
     </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO GOOD_CHATS (
+            ID, USER_ID, MESSAGE, CREATED_AT
+        ) VALUES (
+            GOOD_CHATS_ID_SEQ.nextval, #{userId}, #{message}, #{createdAt}
+        )
+    </insert>
+    
+    <update id="softDelete">
+        UPDATE
+            GOOD_CHATS
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            ID = #{id}
+    </update>
 </mapper>
