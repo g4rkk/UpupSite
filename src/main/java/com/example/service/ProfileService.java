@@ -18,4 +18,16 @@ public class ProfileService {
     public Profile getProfile(Integer id) {
         return profileMapper.getUserProfileById(id);
     }
+    
+    public boolean updateGoodBadCount(Integer id, Integer goodCount, Integer badCount) {
+        try {
+            profileMapper.updateGoodBadCount(id, goodCount, badCount);
+            return true;
+        } catch (Exception e) {
+            // 日志记录异常 e
+            return false;
+        }
+    }
+
 }
+

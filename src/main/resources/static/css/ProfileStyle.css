@@ -110,3 +110,12 @@ body {
 .bar[data-value="60"] { height: 60%; }
 .bar[data-value="80"] { height: 80%; }
 .bar[data-value="75"] { height: 75%; }
+
+#goodBadDoughnutChart {
+    width: 400px;
+    height: 400px;
+    display: block; /* 防止默认的内联行为 */
+    margin: auto; /* 居中显示 */
+}
+
+
