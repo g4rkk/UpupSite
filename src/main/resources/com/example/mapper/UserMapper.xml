@@ -35,4 +35,12 @@
         WHERE
         ID = #{id}           
     </update>
+    
+  	<select id="findById" resultMap="userMap">
+  	 	SELECT * FROM USERS WHERE ID = #{id}
+     </select>
+ 
+ 	<update id="update">
+  		UPDATE USERS SET NAME = #{name}, IMAGE = #{image}, MOTIVATION = #{motivation} WHERE ID = #{id}
+    </update>
 </mapper>
