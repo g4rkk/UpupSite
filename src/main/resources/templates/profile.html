@@ -27,6 +27,17 @@
         <!-- Buttons for Good and Bad Counts -->
         <button onclick="updateCount('good')">Good</button>
         <button onclick="updateCount('bad')">Bad</button>
+        
+        <div>
+            <div>goodchoise</div>
+            <div th:text="${profile.choiseGood}"></div>
+        </div>
+        
+        <div>
+            <div>badchoise</div>
+            <div th:text="${profile.choiseBad}"></div>
+        </div>
+        
 
         <!-- Canvas for the Doughnut Chart -->
         <canvas id="goodBadDoughnutChart"></canvas>
@@ -38,6 +49,8 @@
         /*<![CDATA[*/
         var profile = /*[[${profile}]]*/ {'id': 1, 'choiceGood': 10, 'choiceBad': 5};
         /*]]>*/
+        const goodChoise = /*[[${profile.choiseGood}]]*/"goodChoise";
+        const badChoise = /*[[${profile.choiseBad}]]*/"badChoise";
     </script>
 
     <script src="/js/Profile.js"></script>

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             labels: ['Good', 'Bad'],
             datasets: [{
                 label: 'Good vs Bad',
-                data: [profile.choiceGood, profile.choiceBad],
+                data: [goodChoise, badChoise],
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.6)', // Good 的颜色
                     'rgba(255, 99, 132, 0.6)'  // Bad 的颜色
