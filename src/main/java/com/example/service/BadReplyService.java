@@ -34,6 +34,7 @@ private final BadReplyMapper badReplyMapper;
 		badReply.setCreatedAt(messageForm.getCreatedAt());
 		badReply.setMessage(messageForm.getMessage());
 		badReply.setName(loginUser.getUser().getName());
+		badReply.setImage(loginUser.getUser().getImage());
 		
 		return badReply;
 	}

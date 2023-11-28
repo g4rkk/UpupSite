@@ -7,15 +7,18 @@
 </head>
 <body>
     <main>
-        <h1 class="text-center">Good</h1>
+        <div class="genre w-100">
+            <h1 class="genre-type"><span class="good-marker">Good</span></h1> 
+        </div>
+            
         <div id="chat-wrap">
             <div th:each="goodChat : ${goodChats}" class="chat-content mt-3" th:id="'chat_' + ${goodChat.id}">
                 <div class="d-flex align-items-start">
                     <div class="me-3">
-                        <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+                        <img th:src="${goodChat.chatUser.image}" alt="icon" width="50" height="50" class="rounded-circle">
                     </div>
                     <div>
-                        <div th:text="${goodChat.chatUser.name}"></div>
+                        <div class="name-style" th:text="${goodChat.chatUser.name}"></div>
                         <div th:text="${goodChat.message}" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'" class="cursor-pointer"></div>
                         
                         <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], #authentication.principal.user.id)}">
@@ -44,10 +47,10 @@
                 <div th:each="goodReply : ${goodChat.goodReplies}" class="reply-content mt-2 ms-5"  th:id="'reply_' + ${goodReply.id}" th:if="${goodReply.id != null}">
                     <div class="d-flex align-items-start">
                         <div class="me-3">
-                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+                            <img th:src="${goodReply.replyUser.image}" alt="icon" width="50" height="50" class="rounded-circle">
                         </div>
                         <div>
-                            <div th:text="${goodReply.replyUser.name}"></div>
+                            <div class="name-style" th:text="${goodReply.replyUser.name}"></div>
                             <div th:text="${goodReply.message}"></div>
                                                
                             <div class="heart-position heart-action active" th:if="${#lists.contains(goodReply.goodReplyLikes.![userId], #authentication.principal.user.id)}">

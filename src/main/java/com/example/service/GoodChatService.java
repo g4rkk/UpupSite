@@ -42,6 +42,7 @@ public class GoodChatService {
 		goodChat.setCreatedAt(messageForm.getCreatedAt());
 		goodChat.setMessage(messageForm.getMessage());
 		goodChat.setName(loginUser.getUser().getName());
+		goodChat.setImage(loginUser.getUser().getImage());
 		
 		return goodChat;
 	}

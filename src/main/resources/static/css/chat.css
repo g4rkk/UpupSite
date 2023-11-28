@@ -9,6 +9,41 @@
 .chat-post button {
     min-width: 60px;
 }
+#chat-wrap {
+    padding-top: 20px;
+}
+
+
+
+.good-marker {
+    background: linear-gradient(transparent 60%, rgb(249,249,1, 0.9) 60%);
+}
+.bad-marker {
+    background: linear-gradient(transparent 60%, rgb(66,132,242, 0.7) 60%);
+}
+.name-style {
+    font-size: .75em;
+    font-weight: 700;
+}
+
+
+.genre {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    background-color: #fff;
+    height: 45px;
+    z-index: 5;
+}
+.genre-type {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    margin-bottom: 0;
+}
 
 #form-style {
     position: fixed;

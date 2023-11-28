@@ -42,6 +42,7 @@ public class BadChatService {
 		badChat.setCreatedAt(messageForm.getCreatedAt());
 		badChat.setMessage(messageForm.getMessage());
 		badChat.setName(loginUser.getUser().getName());
+		badChat.setImage(loginUser.getUser().getImage());
 		
 		return badChat;
 	}
