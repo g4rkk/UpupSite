@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.entity.GoodChat;
 import com.example.entity.GoodReply;
 import com.example.form.DeleteForm;
 import com.example.form.MessageForm;
@@ -35,6 +34,7 @@ public class GoodReplyService {
 		goodReply.setCreatedAt(messageForm.getCreatedAt());
 		goodReply.setMessage(messageForm.getMessage());
 		goodReply.setName(loginUser.getUser().getName());
+		goodReply.setImage(loginUser.getUser().getImage());
 		
 		return goodReply;
 	}

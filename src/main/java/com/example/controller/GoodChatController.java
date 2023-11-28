@@ -43,7 +43,7 @@ public class GoodChatController {
 	}
 	
 	@MessageMapping("/main/good/chat")
-	@SendTo("/topic/messages")
+	@SendTo("/topic/good/messages")
 	public GoodChat sendChatMessage(MessageForm messageForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
@@ -54,7 +54,7 @@ public class GoodChatController {
 	}
 	
 	@MessageMapping("/main/good/chat/delete")
-	@SendTo("/topic/deleteMessage")
+	@SendTo("/topic/good/deleteMessage")
 	public GoodChat chatDelete(DeleteForm deleteForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);

@@ -72,7 +72,9 @@
             , R.CREATED_AT AS R_CREATED_AT
             , R.DELETED_AT AS R_DELETED_AT
             , UC.NAME AS UC_NAME
+            , UC.IMAGE AS UC_IMAGE
             , UR.NAME AS UR_NAME
+            , UR.IMAGE AS UR_IMAGE
             , CL.CHAT_ID AS CL_CHAT_ID
             , CL.USER_ID AS CL_USER_ID
             , (

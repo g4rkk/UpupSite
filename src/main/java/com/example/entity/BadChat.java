@@ -17,6 +17,7 @@ public class BadChat {
 	
 	private String typeMessage;
 	private String name;
+	private String image;
 	
 	
 	public Integer getId() {
@@ -95,5 +96,12 @@ public class BadChat {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getImage() {
+		return this.image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

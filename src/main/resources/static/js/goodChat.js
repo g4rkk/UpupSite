@@ -12,13 +12,8 @@ function connect() {
     stompClient = Stomp.over(socket);
     
     stompClient.connect({}, function (frame) {
-        //console.log('接続確認: ' + frame);
         
-        stompClient.subscribe('/topic/messages', function (response) {
-            /**
-             * ここで分岐かな？
-             * showMessage()に対してチャットなのか、返信なのか
-             */
+        stompClient.subscribe('/topic/good/messages', function (response) {
             var responseMessageBody = JSON.parse(response.body);
             if (responseMessageBody.typeMessage == "chat") {
                 showChatMessage(responseMessageBody);
@@ -28,7 +23,7 @@ function connect() {
             
         });
         
-        stompClient.subscribe('/topic/deleteMessage', function (response) {
+        stompClient.subscribe('/topic/good/deleteMessage', function (response) {
             var responseMessageBody = JSON.parse(response.body);
             if (responseMessageBody.typeMessage == "chat") {
                 showChatDeleteMessage(responseMessageBody);
@@ -72,6 +67,7 @@ function sendMessage() {
     if (messageId > 0) {
         var messageForm = { message: message, chatId: messageId };
         sendReply(JSON.stringify(messageForm));
+        closeAction();
     } else {
         var messageForm = { message: message };
         sendChat(JSON.stringify(messageForm));
@@ -89,10 +85,10 @@ function showChatMessage(responseMessageBody) {
         newChatDiv.innerHTML = `
             <div class="d-flex align-items-start">
                 <div class="me-3">
-                    <img src="/images/monster02.png" alt="icon" width="50" height="50" class="rounded-circle">
+                    <img src="${responseMessageBody.image}" alt="icon" width="50" height="50" class="rounded-circle">
                 </div>
                 <div>
-                    <div>${responseMessageBody.name}</div>
+                    <div class="name-style">${responseMessageBody.name}</div>
                     <div onclick="chatAction(${responseMessageBody.id}, '${responseMessageBody.name}')" class="cursor-pointer">${responseMessageBody.message}</div>
                     
                     <div class="heart-position heart-action">
@@ -104,7 +100,7 @@ function showChatMessage(responseMessageBody) {
                         <div class="small-font cursor-pointer" onclick="chatAction(${responseMessageBody.id}, '${responseMessageBody.name}')">
                             メッセージを返信する
                         </div>
-                        <a href="javascript:void(0)" th:onclick="|chatDeleteAction(this)|" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold delete-font">削除</a>
+                        <a href="javascript:void(0)" onclick="chatDeleteAction(this)" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold delete-font">削除</a>
                     </div>
                 </div>
             </div>
@@ -120,10 +116,10 @@ function showChatMessage(responseMessageBody) {
         newChatDiv.innerHTML = `
             <div class="d-flex align-items-start">
                 <div class="me-3">
-                    <img src="/images/monster02.png" alt="icon" width="50" height="50" class="rounded-circle">
+                    <img src="${responseMessageBody.image}" alt="icon" width="50" height="50" class="rounded-circle">
                 </div>
                 <div>
-                    <div>${responseMessageBody.name}</div>
+                    <div class="name-style">${responseMessageBody.name}</div>
                     <div onclick="chatAction(${responseMessageBody.id}, '${responseMessageBody.name}')" class="cursor-pointer">${responseMessageBody.message}</div>
                     
                     <div class="heart-position heart-action">
@@ -154,10 +150,10 @@ function showReplyMessage(responseMessageBody) {
         newReplyDiv.innerHTML = `
             <div class="d-flex align-items-start">
                 <div class="me-3">
-                    <img src="/images/monster02.png" alt="icon" width="50" height="50" class="rounded-circle">
+                    <img src="${responseMessageBody.image}" alt="icon" width="50" height="50" class="rounded-circle">
                 </div>
                 <div>
-                    <div>${responseMessageBody.name}</div>
+                    <div class="name-style">${responseMessageBody.name}</div>
                     <div>${responseMessageBody.message}</div>
                     
                     <div class="heart-position heart-action">
@@ -184,10 +180,10 @@ function showReplyMessage(responseMessageBody) {
         newReplyDiv.innerHTML = `
             <div class="d-flex align-items-start">
                 <div class="me-3">
-                    <img src="/images/monster02.png" alt="icon" width="50" height="50" class="rounded-circle">
+                    <img src="${responseMessageBody.image}" alt="icon" width="50" height="50" class="rounded-circle">
                 </div>
                 <div>
-                    <div>${responseMessageBody.name}</div>
+                    <div class="name-style">${responseMessageBody.name}</div>
                     <div>${responseMessageBody.message}</div>
                     
                     <div class="heart-position heart-action">

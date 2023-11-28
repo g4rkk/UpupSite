@@ -28,7 +28,7 @@ public class GoodReplyController {
 	}
 	
 	@MessageMapping("/main/good/reply")
-	@SendTo("/topic/messages")
+	@SendTo("/topic/good/messages")
 	public GoodReply sendReplyMessage(MessageForm messageForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
@@ -39,7 +39,7 @@ public class GoodReplyController {
 	}
 	
 	@MessageMapping("/main/good/reply/delete")
-	@SendTo("/topic/deleteMessage")
+	@SendTo("/topic/good/deleteMessage")
 	public GoodReply replyDelete(DeleteForm deleteForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);

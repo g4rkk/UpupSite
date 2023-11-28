@@ -29,7 +29,7 @@ public class BadReplyController {
 	}
 	
 	@MessageMapping("/main/bad/reply")
-	@SendTo("/topic/messages")
+	@SendTo("/topic/bad/messages")
 	public BadReply sendReplyMessage(MessageForm messageForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
@@ -40,7 +40,7 @@ public class BadReplyController {
 	}
 	
 	@MessageMapping("/main/bad/reply/delete")
-	@SendTo("/topic/deleteMessage")
+	@SendTo("/topic/bad/deleteMessage")
 	public BadReply replyDelete(DeleteForm deleteForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);

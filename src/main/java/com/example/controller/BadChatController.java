@@ -43,7 +43,7 @@ public class BadChatController {
 	}
 	
 	@MessageMapping("/main/bad/chat")
-	@SendTo("/topic/messages")
+	@SendTo("/topic/bad/messages")
 	public BadChat sendChatMessage(MessageForm messageForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
@@ -54,7 +54,7 @@ public class BadChatController {
 	}
 	
 	@MessageMapping("/main/bad/chat/delete")
-	@SendTo("/topic/deleteMessage")
+	@SendTo("/topic/bad/deleteMessage")
 	public BadChat chatDelete(DeleteForm deleteForm, Principal principal) {
 		
 		LoginUser loginUser = this.loginUserPrincipalService.getLoginUserPrincipal(principal);
