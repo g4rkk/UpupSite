@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-    <meta charset="UTF-8">
-    <title>ユーザー設定画面</title>
+  <meta charset="UTF-8">
+  <title>ユーザー設定画面</title>
  <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
 	<header th:replace="~{layout/header :: header}"></header> 
-    <h1>ユーザー情報設定ページ</h1>
-     <form th:action="@{/edit}" method="post">
-        <div>
-            <label>ユーザー名を変更します</label>
-        </div>
-        <div>
-            <input th:value="${user.name}" type="text" placeholder="ユーザー名を変更します" name="name">
-        </div>
-<!--        <div>-->
-<!--            <label>パスワードを変更します</label>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <input th:value="${user.password}" type="password" placeholder="パスワードを変更します">-->
-<!--        </div>  -->
- 		<div>
-            <label>アイコンを変更します</label>
-        </div>
-        <div>
-            <input th:value="${user.image}" type="text" placeholder="アイコンを変更します" name="image">
-        </div>
-<!--        <div>-->
-<!--            <label>生年月日を変更します</label>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--			<input th:value="${user.birthday}" type="date">-->
-<!--        </div>-->
-    	<div>
-            <label>本日の意気込み</label>
-        </div>
-        <div>
-            <input th:value="${user.motivation}" type="text" placeholder="本日の意気込みを設定します" name="motivation">
-        </div>
-        <div>
-            <input type="submit" value="更新">
-        </div>
-       
-    </form>
+  <h1>ユーザー情報設定ページ</h1>
+ <form th:action="@{/edit}" method="post">
+    <div>
+      <label>ユーザー名を変更します</label>
+    </div>
+    <div>
+      <input th:value="${user.name}" type="text" placeholder="ユーザー名を変更します" name="name">
+    </div>
+ 	<div>
+    <label>アイコンを変更します</label>
+    </div>
+    <div>
+      <input th:value="${user.image}" type="text" placeholder="アイコンを変更します" name="image">
+    </div>
+
+  	<div>
+      <label>本日の意気込み</label>
+   </div>
+    <div>
+      <input th:value="${user.motivation}" type="text" placeholder="本日の意気込みを設定します" name="motivation">
+    </div>
+    <div>
+      <input type="submit" value="更新">
+    </div>
+    
+  </form>
 </body>
 </html>

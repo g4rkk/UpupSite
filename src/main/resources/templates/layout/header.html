@@ -11,6 +11,7 @@
         <a href="/main" class="left element">ホーム</a>
         <a th:href="'/profile/' + ${#authentication.principal.user.id}" class="left element">ユーザー</a>
         <a href="/fortune" class="left element">あげあげ運勢</a>
+        <a href="/edit" class="left element">ユーザー情報編集</a>
 
         <a href="/loginForm" class="right element">ログイン</a>
 	    <form th:action="@{/logout}" method="post" class="right element">
