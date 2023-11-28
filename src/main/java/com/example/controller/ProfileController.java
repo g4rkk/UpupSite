@@ -1,9 +1,12 @@
 package com.example.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Profile;
 import com.example.service.ProfileService;
@@ -31,4 +34,23 @@ public class ProfileController {
         model.addAttribute("profile", profile);
         return "profile";
     }
+    
+    @GetMapping("/profile/updateCounts/{id}")
+    public ResponseEntity<?> updateCounts(@PathVariable("id") Integer id, 
+            @RequestParam("good") Integer goodCount, 
+            @RequestParam("bad") Integer badCount) {
+try {
+boolean updated = profileService.updateGoodBadCount(id, goodCount, badCount);
+if (updated) {
+return ResponseEntity.ok().body("{\"success\": true}");
+} else {
+return ResponseEntity.badRequest().body("{\"success\": false, \"message\": \"Update failed\"}");
 }
+} catch (Exception e) {
+// 日志记录异常 e
+return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"success\": false, \"message\": \"Internal server error\"}");
+}
+}
+    
+}
+

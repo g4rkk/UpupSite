@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BadChatMapper">
+    <resultMap type="com.example.entity.BadChat" id="badChatMap">
+        <id column="ID" property="id"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="MESSAGE" property="message"/>
+        <result column="CREATED_AT" property="createdAt"/>
+        <result column="DELETED_AT" property="deletedAt"/>
+        <result column="CHAT_LIKES_COUNT" property="badChatLikesCount"/>
+        
+        <association property="chatUser" javaType="com.example.entity.User">
+            <id column="UC_ID" property="id"/>
+            <result column="UC_EMAIL" property="email"/>
+            <result column="UC_PASSWORD" property="password"/>
+            <result column="UC_NAME" property="name"/>
+            <result column="UC_CHOISE_BAD" property="choiseBad"/>
+            <result column="UC_CHOISE_BAD" property="choiseBad"/>
+            <result column="UC_BIRTHDAY" property="birthday"/>
+            <result column="UC_IMAGE" property="image"/>
+            <result column="UC_MONEY" property="money"/>
+            <result column="UC_JOB" property="job"/>
+            <result column="UC_LOVE" property="love"/>
+            <result column="UC_MOTIVATION" property="motivation"/>
+        </association>
+        
+        <collection property="badReplies" ofType="com.example.entity.BadReply">
+            <id column="R_ID" property="id"/>
+            <result column="R_USER_ID" property="userId"/>
+            <result column="R_CHAT_ID" property="chatId"/>
+            <result column="R_MESSAGE" property="message"/>
+            <result column="R_CREATED_AT" property="createdAt"/>
+            <result column="R_DELETED_AT" property="deletedAt"/>
+            <result column="REPLY_LIKES_COUNT" property="badReplyLikesCount"/>
+            <association property="replyUser" javaType="com.example.entity.User">
+                <id column="UR_ID" property="id"/>
+                <result column="UR_EMAIL" property="email"/>
+                <result column="UR_PASSWORD" property="password"/>
+                <result column="UR_NAME" property="name"/>
+                <result column="UR_CHOISE_BAD" property="choiseBad"/>
+                <result column="UR_CHOISE_BAD" property="choiseBad"/>
+                <result column="UR_BIRTHDAY" property="birthday"/>
+                <result column="UR_IMAGE" property="image"/>
+                <result column="UR_MONEY" property="money"/>
+                <result column="UR_JOB" property="job"/>
+                <result column="UR_LOVE" property="love"/>
+                <result column="UR_MOTIVATION" property="motivation"/>
+            </association>
+            <collection property="badReplyLikes" ofType="com.example.entity.BadReplyLike">
+                <id column="RL_ID" property="id"/>
+                <result column="RL_REPLY_ID" property="replyId"/>
+                <result column="RL_USER_ID" property="userId"/>
+            </collection>
+        </collection>
+        
+        <collection property="badChatLikes" ofType="com.example.entity.BadChatLike">
+            <id column="CL_ID" property="id"/>
+            <result column="CL_CHAT_ID" property="chatId"/>
+            <result column="CL_USER_ID" property="userId"/>
+        </collection>
+    </resultMap>
+    
+    <select id="findAll" resultMap="badChatMap">
+        SELECT
+            C.*
+            , R.ID AS R_ID
+            , R.USER_ID AS R_USER_ID
+            , R.CHAT_ID AS R_CHAT_ID
+            , R.MESSAGE AS R_MESSAGE
+            , R.CREATED_AT AS R_CREATED_AT
+            , R.DELETED_AT AS R_DELETED_AT
+            , UC.NAME AS UC_NAME
+            , UR.NAME AS UR_NAME
+            , CL.CHAT_ID AS CL_CHAT_ID
+            , CL.USER_ID AS CL_USER_ID
+            , (
+                SELECT
+                    COUNT(*)
+                FROM
+                    BAD_CHAT_LIKES
+                WHERE
+                    C.ID = CHAT_ID
+            ) AS CHAT_LIKES_COUNT
+            , RL.REPLY_ID AS RL_REPLY_ID
+            , RL.USER_ID AS RL_USER_ID
+            , (
+                SELECT
+                    COUNT(*)
+                FROM
+                    BAD_REPLY_LIKES
+                WHERE
+                    R.ID = REPLY_ID
+            ) AS REPLY_LIKES_COUNT
+       FROM
+           BAD_CHATS C
+       LEFT OUTER JOIN BAD_REPLIES R
+           ON C.ID = R.CHAT_ID
+       LEFT OUTER JOIN USERS UC
+           ON C.USER_ID = UC.ID
+       LEFT OUTER JOIN USERS UR
+           ON R.USER_ID = UR.ID
+       LEFT OUTER JOIN BAD_CHAT_LIKES CL
+           ON C.ID = CL.CHAT_ID
+       LEFT OUTER JOIN BAD_REPLY_LIKES RL
+           ON R.ID = RL.REPLY_ID
+       WHERE
+           C.DELETED_AT IS NULL
+           AND R.DELETED_AT IS NULL
+       ORDER BY
+            C.ID ASC
+            , R.ID ASC
+    </select>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO BAD_CHATS (
+            ID, USER_ID, MESSAGE, CREATED_AT
+        ) VALUES (
+            BAD_CHATS_ID_SEQ.nextval, #{userId}, #{message}, #{createdAt}
+        )
+    </insert>
+    
+    <update id="softDelete">
+        UPDATE
+            BAD_CHATS
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            ID = #{id}
+    </update>
+</mapper>

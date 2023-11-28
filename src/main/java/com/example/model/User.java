@@ -1,25 +1,24 @@
-package com.example.entity;
+package com.example.model;
 
 import java.util.Date;
 
-public class Profile {
-	private Integer id;
+public class User {
+    private Long id;
     private String email;
     private String password;
     private String name;
-    private Integer choiseGood; // 而非 choiceGood
-    private Integer choiseBad;  // 而非 choiceBad
+    private Integer choiceGood;
+    private Integer choiceBad;
     private Date birthday;
     private String image;
     private Integer money;
     private Integer job;
     private Integer love;
     private String motivation;
-    
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getEmail() {
@@ -40,21 +39,18 @@ public class Profile {
 	public void setName(String name) {
 		this.name = name;
 	}
-    public Integer getChoiseGood() {
-        return choiseGood;
-    }
-
-    public void setChoiseGood(Integer choiseGood) {
-        this.choiseGood = choiseGood;
-    }
-
-    public Integer getChoiseBad() {
-        return choiseBad;
-    }
-
-    public void setChoiseBad(Integer choiseBad) {
-        this.choiseBad = choiseBad;
-    }
+	public Integer getChoiceGood() {
+		return choiceGood;
+	}
+	public void setChoiceGood(Integer choiceGood) {
+		this.choiceGood = choiceGood;
+	}
+	public Integer getChoiceBad() {
+		return choiceBad;
+	}
+	public void setChoiceBad(Integer choiceBad) {
+		this.choiceBad = choiceBad;
+	}
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -79,17 +75,18 @@ public class Profile {
 	public void setJob(Integer job) {
 		this.job = job;
 	}
-	public Integer getLove() {
-		return love;
-	}
-	public void setLove(Integer love) {
-		this.love = love;
-	}
 	public String getMotivation() {
 		return motivation;
 	}
 	public void setMotivation(String motivation) {
 		this.motivation = motivation;
 	}
+	public Integer getLove() {
+		return love;
+	}
+	public void setLove(Integer love) {
+		this.love = love;
+	}
 
+    // Getters and setters...
 }

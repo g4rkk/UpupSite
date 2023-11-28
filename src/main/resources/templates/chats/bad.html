@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{layout/chats/main :: main(~{::title}, ~{::body/content()})}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Bad</title>
 </head>
 <body>
-
+    <main>
+        <h1 class="text-center">Bad</h1>
+        <div id="chat-wrap">
+            <div th:each="badChat : ${badChats}" class="chat-content mt-3" th:id="'chat_' + ${badChat.id}">
+                <div class="d-flex align-items-start">
+                    <div class="me-3">
+                        <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+                    </div>
+                    <div>
+                        <div th:text="${badChat.chatUser.name}"></div>
+                        <div th:text="${badChat.message}" th:attr="onclick='chatAction(' + ${badChat.id} + ', \'' + ${badChat.chatUser.name} + '\')'" class="cursor-pointer"></div>
+                        
+                        <div class="heart-position heart-action active" th:if="${#lists.contains(badChat.badChatLikes.![userId], #authentication.principal.user.id)}">
+                            <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${badChat.id} + ', this)'"></div>
+                            <div class="heart-count" th:text="${badChat.badChatLikesCount}"></div>
+                        </div>
+                        
+                        <div class="heart-position heart-action" th:unless="${#lists.contains(badChat.badChatLikes.![userId], #authentication.principal.user.id)}">
+                            <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${badChat.id} + ', this)'"></div>
+                            <div class="heart-count" th:text="${badChat.badChatLikesCount}"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mt-2 aligin-delete">
+                            <div class="small-font cursor-pointer" th:attr="onclick='chatAction(' + ${badChat.id} + ', \'' + ${badChat.chatUser.name} + '\')'">
+                                メッセージを返信する
+                            </div>
+                            <th:block th:if="${badChat.userId == #authentication.principal.user.id}">
+                                <a href="javascript:void(0)" th:onclick="|chatDeleteAction(this)|" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold delete-font">削除</a>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div th:each="badReply : ${badChat.badReplies}" class="reply-content mt-2 ms-5"  th:id="'reply_' + ${badReply.id}" th:if="${badReply.id != null}">
+                    <div class="d-flex align-items-start">
+                        <div class="me-3">
+                            <img th:src="@{/images/monster02.png}" alt="icon" width="50" height="50" class="rounded-circle">
+                        </div>
+                        <div>
+                            <div th:text="${badReply.replyUser.name}"></div>
+                            <div th:text="${badReply.message}"></div>
+                                               
+                            <div class="heart-position heart-action active" th:if="${#lists.contains(badReply.badReplyLikes.![userId], #authentication.principal.user.id)}">
+                                <div class="heart cursor-pointer" th:attr="onclick='replyLikeAction(' + ${badReply.id} + ', this)'"></div>
+                                <div class="heart-count" th:text="${badReply.badReplyLikesCount}"></div>
+                            </div>
+                            
+                            <div class="heart-position heart-action" th:unless="${#lists.contains(badReply.badReplyLikes.![userId], #authentication.principal.user.id)}">
+                                <div class="heart cursor-pointer" th:attr="onclick='replyLikeAction(' + ${badReply.id} + ', this)'"></div>
+                                <div class="heart-count" th:text="${badReply.badReplyLikesCount}"></div>
+                            </div>
+                            
+                            <div class="d-flex align-items-center mt-2 aligin-delete">
+                                <div class="small-font">メッセージを返信する</div>
+                                <th:block th:if="${badReply.userId == #authentication.principal.user.id}">
+                                    <a href="javascript:void(0)" th:onclick="|replyDeleteAction(this)|" class="d-inline-block ms-4 link-danger text-decoration-none fw-bold delete-font">削除</a>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

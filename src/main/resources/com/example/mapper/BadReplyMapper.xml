@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BadReplyMapper">
+    <resultMap type="com.example.entity.BadReply" id="badReplyMap">
+        <id column="ID" property="id"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="CHAT_ID" property="chatId"/>
+        <result column="MESSAGE" property="message"/>
+        <result column="CREATED_AT" property="createdAt"/>
+        <result column="DELETED_AT" property="deletedAt"/>
+        
+        <association property="user" javaType="com.example.entity.User">
+            <id column="UC_ID" property="id"/>
+            <result column="UC_EMAIL" property="email"/>
+            <result column="UC_PASSWORD" property="password"/>
+            <result column="UC_NAME" property="name"/>
+            <result column="UC_CHOISE_BAD" property="choiseBad"/>
+            <result column="UC_CHOISE_BAD" property="choiseBad"/>
+            <result column="UC_BIRTHDAY" property="birthday"/>
+            <result column="UC_IMAGE" property="image"/>
+            <result column="UC_MONEY" property="money"/>
+            <result column="UC_JOB" property="job"/>
+            <result column="UC_LOVE" property="love"/>
+            <result column="UC_MOTIVATION" property="motivation"/>
+        </association>
+    </resultMap>
+    
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO BAD_REPLIES (
+            ID, USER_ID, CHAT_ID, MESSAGE, CREATED_AT
+        ) VALUES (
+            BAD_REPLIES_ID_SEQ.nextval, #{userId}, #{chatId}, #{message}, #{createdAt}
+        )
+    </insert>
+    
+    <update id="softDelete">
+        UPDATE
+            BAD_REPLIES
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            ID = #{id}
+    </update>
+    
+    <update id="cascadeReplySoftDelete">
+        UPDATE
+            BAD_REPLIES
+        SET
+            DELETED_AT = #{deletedAt}
+        WHERE
+            CHAT_ID = #{id}
+            AND DELETED_AT IS NULL
+    </update>
+</mapper>

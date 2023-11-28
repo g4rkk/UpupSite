@@ -12,8 +12,10 @@
         <result column="EMAIL" property="email"/>
         <result column="PASSWORD" property="password"/>
         <result column="NAME" property="name"/>
-        <result column="CHOICE_GOOD" property="choiceGood"/>
-        <result column="CHOICE_BAD" property="choiceBad"/>
+
+    <result column="CHOISE_GOOD" property="choiseGood"/>
+    <result column="CHOISE_BAD" property="choiseBad"/>
+
         <result column="BIRTHDAY" property="birthday"/>
         <result column="IMAGE" property="image"/>
         <result column="MONEY" property="money"/>
@@ -25,4 +27,15 @@
      <select id="getUserProfileById" resultMap="ProfileMap">
         SELECT * FROM USERS WHERE ID = #{id}
     </select>
+
+    
+<!-- 更新 Good 和 Bad 计数 -->
+<update id="updateGoodBadCount">
+    UPDATE USERS
+    SET CHOISE_GOOD = #{goodCount}, CHOISE_BAD = #{badCount}
+    WHERE ID = #{id}
+</update>
+
+    
+
 </mapper>

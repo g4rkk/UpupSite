@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class BadReply {
 	private Integer id;
@@ -10,6 +11,14 @@ public class BadReply {
 	private LocalDateTime createdAt;
 	private LocalDateTime deletedAt;
 	private BadChat badChat;
+	private User replyUser;
+	
+	private List<BadReplyLike> badReplyLikes;
+	private Integer badReplyLikesCount;
+	
+	private String typeMessage;
+	private String name;
+	
 	
 	public Integer getId() {
 		return this.id;
@@ -59,5 +68,40 @@ public class BadReply {
 	}
 	public void setBadChat(BadChat badChat) {
 		this.badChat = badChat;
+	}
+	
+	public User getReplyUser() {
+		return this.replyUser;
+	}
+	public void setReplyUser(User replyUser) {
+		this.replyUser = replyUser;
+	}
+	
+	public List<BadReplyLike> getBadReplyLikes() {
+		return this.badReplyLikes;
+	}
+	public void setBadReplyLikes(List<BadReplyLike> badReplyLikes) {
+		this.badReplyLikes = badReplyLikes;
+	}
+	
+	public Integer getBadReplyLikesCount() {
+		return this.badReplyLikesCount;
+	}
+	public void setBadReplyLikesCount(Integer badReplyLikesCount) {
+		this.badReplyLikesCount = badReplyLikesCount;
+	}
+	
+	public String getTypeMessage() {
+		return this.typeMessage;
+	}
+	public void setTypeMessage(String typeMessage) {
+		this.typeMessage = typeMessage;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

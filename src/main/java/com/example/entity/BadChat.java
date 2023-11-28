@@ -10,6 +10,14 @@ public class BadChat {
 	private LocalDateTime createdAt;
 	private LocalDateTime deletedAt;
 	private List<BadReply> BadReplies;
+	private User chatUser;
+	
+	private List<BadChatLike> badChatLikes;
+	private Integer badChatLikesCount;
+	
+	private String typeMessage;
+	private String name;
+	
 	
 	public Integer getId() {
 		return this.id;
@@ -50,7 +58,42 @@ public class BadChat {
 	public List<BadReply> getBadReplies() {
 		return this.BadReplies;
 	}
-	public void setGoodReplies(List<BadReply> BadReplies) {
+	public void setBadReplies(List<BadReply> BadReplies) {
 		this.BadReplies = BadReplies;
+	}
+	
+	public User getChatUser() {
+		return this.chatUser;
+	}
+	public void setChatUser(User chatUser) {
+		this.chatUser = chatUser;
+	}
+	
+	public List<BadChatLike> getBadChatLikes() {
+		return this.badChatLikes;
+	}
+	public void setBadChatLikes(List<BadChatLike> badChatLikes) {
+		this.badChatLikes = badChatLikes;
+	}
+
+	public Integer getBadChatLikesCount() {
+		return this.badChatLikesCount;
+	}
+	public void setBadChatLikesCount(Integer badChatLikesCount) {
+		this.badChatLikesCount = badChatLikesCount;
+	}
+	
+	public String getTypeMessage() {
+		return this.typeMessage;
+	}
+	public void setTypeMessage(String typeMessage) {
+		this.typeMessage = typeMessage;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

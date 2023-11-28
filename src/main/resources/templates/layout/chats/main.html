@@ -81,7 +81,10 @@
     </th:block>
     
     <th:block th:if="${badChats}">
-        
+        <script defer th:src="@{/js/badLikeHandle.js}"></script>
+        <script defer th:src="@{/js/badLikeAction.js}"></script>
+        <script defer th:src="@{/js/badDeleteAction.js}"></script>
+        <script defer th:src="@{/js/badChat.js}"></script>
     </th:block>
 </body>
 </html>
