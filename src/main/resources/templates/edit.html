@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>ユーザー設定画面</title>
+ <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
+	<header th:replace="~{layout/header :: header}"></header> 
     <h1>ユーザー情報設定ページ</h1>
      <form th:action="@{/edit}" method="post">
         <div>
