@@ -32,7 +32,7 @@
                         </div>
                         
                         <div class="d-flex align-items-center mt-2 aligin-delete">
-                            <div class="small-font cursor-pointer" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'">
+                            <div class="small-font cursor-pointer" th:onclick="|chatAction('__${goodChat.id}__', '__${goodChat.chatUser.name}__')|">
                                 メッセージを返信する
                             </div>
                             <th:block th:if="${goodChat.userId == #authentication.principal.user.id}">
