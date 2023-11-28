@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.0/destyle.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div th:if="${param.error}">
         <p>ユーザー名またはパスワードが違います。</p>
     </div>
+    
     <form th:action="@{/login}" method="post">
-        <div>
-            <label>メールアドレス：</label>
-            <input type="email" name="email">
-        </div>
-        <div>
-            <label>パスワード：</label>
-            <input type="password" name="password">
-        </div>
-        <div>
-            <input type="submit" value="ログイン">
+        <div class="container mt-5 p-5">
+            <div class="mb-3">
+                <label class="form-label">メールアドレス：</label>
+                <input type="email" name="email" class="form-control" placeholder="メールアドレスを入力">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">パスワード：</label>
+                <input type="password" name="password" class="form-control" placeholder="パスワードを入力">
+            </div>
+            <div class="d-flex  flex-row-reverse">
+                <button type="submit" class="btn btn-primary">ログイン</button>
+            </div>
         </div>
     </form>
 </body>
