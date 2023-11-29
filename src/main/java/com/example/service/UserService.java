@@ -32,6 +32,9 @@ public class UserService {
 
 
     public void registerUser(UserForm userForm) {
+    	if (userMapper.findByEmail(userForm.getEmail()) != null) {
+    		throw new RuntimeException("このメールアドレスは既に登録されています。");
+    	}
     	User user = new User();
     	user.setEmail(userForm.getEmail());
     	user.setPassword(passwordEncoder.encode(userForm.getPassword()));

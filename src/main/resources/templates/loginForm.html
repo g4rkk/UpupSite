@@ -10,6 +10,13 @@
 </head>
     <body class="d-flex align-items-center py-4 bg-body-tertiary">
         <main class="form-signin w-100 m-auto">
+            
+            <div th:if="${param.error}" class="row">
+                <div class="col-md-10 text-danger fw-bold">
+                    <p>Emailアドレスまたはパスワードが違います。</p>
+                </div>
+            </div>
+            
             <h1 class="h3 mb-3 fw-normal">ログイン</h1>
             <form th:action="@{/login}" method="POST" class="text-center">
                 <div class="form-floating">
@@ -21,7 +28,7 @@
                     <label for="floatingPassword">パスワード</label>
                 </div>
                 <div class="text-start my-3">
-                    <a th:href="@{/register}" class="text-decoration-none fw-bolder text-body fw-bolde register-form">新規登録はこちら</a>
+                    <a th:href="@{/register}" class="text-decoration-none text-body fw-bold register-form">新規登録はこちら</a>
                 </div>
                 <button class="btn btn-primary w-100 py-2" type="submit">サインイン</button>
             </form>

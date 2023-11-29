@@ -20,16 +20,6 @@ public class UserController {
     	this.userService = userService;
     }
     
-    /**
-     * @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody RegistrationForm form) {
-        userService.registerUser(form);
-        //return ResponseEntity.ok("ユーザー登録成功しました！");
-        return "redirect:/main";
-    }
-     *
-     */
-
     @GetMapping("/register")
     public String showRegistrationForm(RegistrationForm registrationForm, UserForm userForm, Model model) {
     	model.addAttribute("registrationForm", registrationForm);
@@ -38,9 +28,14 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public String registerUser(UserForm userForm) {
-        userService.registerUser(userForm);
-        return "redirect:/main";
+    public String registerUser(UserForm userForm, Model model) {
+    	try {
+    		userService.registerUser(userForm);
+            return "redirect:/main";
+    	} catch (Exception e) {
+    		 model.addAttribute("error",  "このメールアドレスは既に登録されています。");
+             return "registerForm";
+    	}
     }
 
 }
