@@ -1,121 +1,56 @@
 @charset "UTF-8";
 body {
-  font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.profile-container {
-  width: 300px;
-  border: 1px solid #000;
-  padding: 10px;
-  margin: auto;
-}
-
-.profile-picture {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: auto;
-}
-
-.profile-info {
-  text-align: center;
-}
-
-.profile-rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.rating-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: relative;
-}
-
-.rating-circle::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: blue; /*  'Good' */
-  border-radius: 100px 0 0 100px;
-}
-
-.rating-circle::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: red; /*  'Bad' */
-  border-radius: 0 100px 100px 0;
-}
-
-.profile-rating-text {
-  position: absolute;
+.container {
   width: 100%;
-  text-align: center;
-  line-height: 100px;
-  font-weight: bold;
-  color: #fff;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
 }
 
-
-.chart {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid #000;
-    padding: 10px;
+.profile-header {
+   position: relative; /* 设置为相对定位，伪元素将相对于它定位 */
+  display: inline-block; /* 使 h1 标签的宽度仅包围文字 */
+  margin-bottom: 60px; /* 增加至所需的间距大小 */
 }
 
-.bars {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 200px; /* チャートの高さ */
-    margin: 0;
+.profile-detail {
+    margin-top: 40px; /* 如果需要，也可以增加上方的间距 */
+  margin-bottom: 20px; /* 已有样式，根据需要进行调整 */
 }
 
-.bar {
-    width: 20%; /* バーの幅 */
-    background-color: #4CAF50; /* バーの色 */
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    transition: height 0.5s;
+/* 调整按钮样式 */
+button.btn {
+  width: 120px;
+  height: 40px;
+  margin: 10px 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.bar span {
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
-    text-align: center;
+/* 增加按钮与choice显示之间的间距 */
+.buttons-container { /* 假设这是包含按钮的容器的类名 */
+  margin-bottom: 30px;
 }
 
-.bar::before {
-    content: attr(data-value) '%';
-    margin-bottom: 5px;
+/* 增加choice显示与圆环图之间的间距 */
+.choice-display { /* 假设这是显示goodchoice和badchoice的容器的类名 */
+  margin-bottom: 30px;
 }
-
-/* JavaScriptを使用してバーの高さを動的に設定します */
-.bar[data-value="60"] { height: 60%; }
-.bar[data-value="80"] { height: 80%; }
-.bar[data-value="75"] { height: 75%; }
 
 #goodBadDoughnutChart {
     width: 400px;
     height: 400px;
-    display: block; /* 防止默认的内联行为 */
-    margin: auto; /* 居中显示 */
 }
 
-
+.underline {
+    width: 90%; /* 文字宽度的三分之一 */
+    height: 10px; /* 横线的高度 */
+    background-color: yellow; /* 横线的颜色 */
+    margin: 0 auto; /* 水平居中 */
+    margin-top: -25px; /* 距离标题的距离 */
+}

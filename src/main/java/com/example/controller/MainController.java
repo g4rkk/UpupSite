@@ -37,7 +37,7 @@ public class MainController {
     
 //    @PostMapping("/goodCount")
 //    public String goodCount(Integer id) {
-//    	this.mainService.choise_good_update(id);
+//    	this.mainService.choice_good_update(id);
 //    	return "redirect:/item";
 //    }
     
@@ -46,7 +46,7 @@ public class MainController {
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
 		System.out.println("user_id: " + loginUser.getUser().getId());
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-    	this.mainService.choise_good_update(loginUser.getUser().getId());
+    	this.mainService.choice_good_update(loginUser.getUser().getId());
     	return "redirect:/main/good";
     }
     
@@ -55,7 +55,7 @@ public class MainController {
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
 		System.out.println("user_id: " + loginUser.getUser().getId());
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-    	this.mainService.choise_bad_update(loginUser.getUser().getId());
+    	this.mainService.choice_good_update(loginUser.getUser().getId());
     	return "redirect:/main/bad";
     }
     

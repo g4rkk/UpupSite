@@ -16,8 +16,8 @@
             <result column="UC_EMAIL" property="email"/>
             <result column="UC_PASSWORD" property="password"/>
             <result column="UC_NAME" property="name"/>
-            <result column="UC_CHOISE_BAD" property="choiseBad"/>
-            <result column="UC_CHOISE_BAD" property="choiseBad"/>
+            <result column="UC_CHOICE_BAD" property="choiceBad"/>
+            <result column="UC_CHOICE_BAD" property="choiceBad"/>
             <result column="UC_BIRTHDAY" property="birthday"/>
             <result column="UC_IMAGE" property="image"/>
             <result column="UC_MONEY" property="money"/>
@@ -39,8 +39,8 @@
                 <result column="UR_EMAIL" property="email"/>
                 <result column="UR_PASSWORD" property="password"/>
                 <result column="UR_NAME" property="name"/>
-                <result column="UR_CHOISE_BAD" property="choiseBad"/>
-                <result column="UR_CHOISE_BAD" property="choiseBad"/>
+                <result column="UR_CHOICE_BAD" property="choiceBad"/>
+                <result column="UR_CHOICE_BAD" property="choiceBad"/>
                 <result column="UR_BIRTHDAY" property="birthday"/>
                 <result column="UR_IMAGE" property="image"/>
                 <result column="UR_MONEY" property="money"/>

@@ -26,11 +26,12 @@ public class MainService {
         return this.mainMapper.findBadchatRandom();
     }
     
-    public void choise_good_update(Integer id) {
-    	this.mainMapper.choise_good_update(id);
+    public void choice_good_update(Integer id) {
+    	this.mainMapper.choice_good_update(id);
 	}
     
-    public void choise_bad_update(Integer id) {
-    	this.mainMapper.choise_bad_update(id);
+    public void choice_bad_update(Integer id) {
+    	this.mainMapper.choice_bad_update(id);
 	}
+
 }

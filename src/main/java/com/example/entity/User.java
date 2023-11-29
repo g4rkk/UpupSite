@@ -7,8 +7,8 @@ public class User {
 	private String email;
 	private String password;
 	private String name;
-	private Integer choiseGood;
-	private Integer choiseBad;
+	private Integer choiceGood;
+	private Integer choiceBad;
 	private LocalDateTime birthday;
 	private String image;
 	private Integer money;
@@ -44,18 +44,18 @@ public class User {
 		this.name = name;
 	}
 	
-	public Integer getChoiseGood() {
-		return this.choiseGood;
+	public Integer getChoiceGood() {
+		return this.choiceGood;
 	}
-	public void setChoiseGood(Integer choiseGood) {
-		this.choiseGood = choiseGood;
+	public void setChoiceGood(Integer choiceGood) {
+		this.choiceGood = choiceGood;
 	}
 	
-	public Integer getChoiseBad() {
-		return this.choiseBad;
+	public Integer getChoiceBad() {
+		return this.choiceBad;
 	}
-	public void setChoiseBad(Integer choiseBad) {
-		this.choiseBad = choiseBad;
+	public void setChoiceBad(Integer choiceBad) {
+		this.choiceBad = choiceBad;
 	}
 
 	public LocalDateTime getBirthday() {
