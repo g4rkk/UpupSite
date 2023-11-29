@@ -1,6 +1,7 @@
 package com.example.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/loginForm").permitAll()
+			.antMatchers("/loginForm", "/register", "/main").permitAll()
 			.anyRequest().authenticated();
 		
 		http.formLogin()
@@ -22,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/loginForm")
 			.usernameParameter("email")
 			.passwordParameter("password")
-			.defaultSuccessUrl("/main", false)
+			.defaultSuccessUrl("/main", true)
 			.failureUrl("/loginForm?error");
 		
 		http.logout()
@@ -41,4 +42,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
 	}
+	
+	@Override
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 }

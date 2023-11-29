@@ -18,4 +18,5 @@ public interface UserMapper {
     
     public void update(Integer id, String name,String image,String motivation);
 
+    public void registerUser(User user);
 }

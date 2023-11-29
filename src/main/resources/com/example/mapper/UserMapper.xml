@@ -57,5 +57,13 @@
         WHERE
             ID = #{user_id}
     </select>
+    
+    <insert id="registerUser" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO USERS (
+            ID, EMAIL, PASSWORD, NAME
+        ) VALUES (
+            USERS_ID_SEQ.nextval, #{email}, #{password}, #{name}
+        )
+    </insert>
 
 </mapper>
