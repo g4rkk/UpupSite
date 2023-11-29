@@ -9,10 +9,14 @@
 </head>
 <body>
     <header th:replace="~{layout/header :: header}"></header> 
+    
     <div class="container text-center">
         <div class="profile-header">
             <h1>プロフィール</h1>
             <div class="underline"></div> <!-- 新增横线的div -->
+            
+          <a href="/edit" class="btn btn-secondary mt-3">ユーザー設定</a>
+
         </div>
 
         <!-- Profile Details -->
@@ -44,7 +48,6 @@
 
         <!-- Canvas for the Doughnut Chart -->
         <canvas id="goodBadDoughnutChart"></canvas>
-
     </div>
     
     <script th:inline="javascript">

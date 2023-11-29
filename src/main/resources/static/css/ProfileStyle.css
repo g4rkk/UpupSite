@@ -4,21 +4,27 @@ body {
 }
 
 .container {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 30px; /* 调整内边距 */
+    border: 2px solid #ddd; /* 添加边框 */
+    border-radius: 10px; /* 边框圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    background-color: #fff; /* 设置背景颜色 */
 }
 
 .profile-header {
-   position: relative; /* 设置为相对定位，伪元素将相对于它定位 */
-  display: inline-block; /* 使 h1 标签的宽度仅包围文字 */
-  margin-bottom: 60px; /* 增加至所需的间距大小 */
+   position: relative; 
+   display: inline-block; 
+   margin-bottom: 60px; 
 }
 
 .profile-detail {
-    margin-top: 40px; /* 如果需要，也可以增加上方的间距 */
-  margin-bottom: 20px; /* 已有样式，根据需要进行调整 */
+    margin-top: 40px; 
+    margin-bottom: 20px; 
+    margin-left: 20px; /* 调整左右外边距 */
+    margin-right: 20px; 
 }
 
 /* 调整按钮样式 */
@@ -32,14 +38,16 @@ button.btn {
   font-weight: 600;
 }
 
-/* 增加按钮与choice显示之间的间距 */
-.buttons-container { /* 假设这是包含按钮的容器的类名 */
+.buttons-container { 
   margin-bottom: 30px;
+  margin-left: 20px; /* 调整左右外边距 */
+  margin-right: 20px; 
 }
 
-/* 增加choice显示与圆环图之间的间距 */
-.choice-display { /* 假设这是显示goodchoice和badchoice的容器的类名 */
+.choice-display { 
   margin-bottom: 30px;
+  margin-left: 20px; /* 调整左右外边距 */
+  margin-right: 20px; 
 }
 
 #goodBadDoughnutChart {
@@ -48,9 +56,16 @@ button.btn {
 }
 
 .underline {
-    width: 90%; /* 文字宽度的三分之一 */
-    height: 10px; /* 横线的高度 */
-    background-color: yellow; /* 横线的颜色 */
-    margin: 0 auto; /* 水平居中 */
-    margin-top: -25px; /* 距离标题的距离 */
+    width: 90%; 
+    height: 10px; 
+    background-color: yellow; 
+    margin: 0 auto; 
+    margin-top: -25px; 
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px; /* 减少内边距 */
+    }
 }

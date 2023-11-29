@@ -72,9 +72,12 @@ h2 {
     background: rgba(153, 102, 255, 1);
 }
 
-/* 调整响应式布局 */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
+/* Style for the yellow line under the title */
+.title-underline {
+    width: 15%; /* 文字宽度的三分之一 */
+    height: 10px; /* 横线的高度 */
+    background-color: yellow; /* 横线的颜色 */
+    margin: 0 auto; /* 水平居中 */
+    margin-top: -25px; /* 距离标题的距离 */
 }
+
