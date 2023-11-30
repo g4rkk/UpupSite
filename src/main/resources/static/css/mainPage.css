@@ -6,6 +6,7 @@
         .text{
             display: flex;
             justify-content: center;
+            margin-top:20px;
         }
         .main_chat{
             display: flex;
@@ -13,20 +14,27 @@
         }
 
         #chat{
-            border: solid;
+            border: 2px solid #ddd; /* 添加边框 */
             border-radius: 25px;
             padding: 15px;
 /*            padding-left: 30px;*/
 /*            padding-right: 30px;*/
             margin: 30px;
             margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    		background-color: #fff; /* 设置背景颜色 */
         }
         
-    .message{
+    	.message{
 			opacity: 0.8;
 		}
 		
 		.genre-type {
 			display: flex;
             justify-content: center;
+            margin-top:20px;
+		}
+		
+		.container{
+			margin-top:10px;
 		}
