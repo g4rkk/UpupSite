@@ -38,7 +38,7 @@
 		<div class="row">
 	        <div class="col" id="chat">
 	            <div class="ml-2">
-	            	<button type="button" onClick="countGood()" class="btn">GOOD</button>
+	            	<button type="button" onClick="countGood()" class="btn" id="btn1">GOOD</button>
 	            </div>
 	            <br>
 	            <div th:each="goodchat : ${goodchats}">
@@ -48,7 +48,7 @@
 	    
 	        <div class="col" id="chat">
 				<div class="ml-2">
-	            	<button type="button" onClick="countBad()" class="btn">BAD</button>
+	            	<button type="button" onClick="countBad()" class="btn" id="btn2">BAD</button>
 	            </div>
 	            <br>
 	            <div th:each="badchat : ${badchats}">
