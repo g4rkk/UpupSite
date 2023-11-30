@@ -25,15 +25,19 @@
 	</h1>
     <h5 class="text">
 		このサイトはユーザーを明るい気持ちにすることを目的にしたサイトです!<br>
-		まずはあなたの気持ちを教えてください!(GOOD/BADの選択回数は記録されます)<br>
-		下記のボックスにはそれぞれの最新10件のメッセージが表示されています!
+		まずはあなたの気持ちを教えてください!
 	</h5>
+	<h9 class="text">
+		下記のボックスにはそれぞれの最新10件のメッセージが表示されています!
+		<br>
+		(GOOD/BADの選択回数は記録されます)
+	</h9>
 
     <div class="container text-center">
 		<div class="row">
 	        <div class="col" id="chat">
 	            <div class="ml-2">
-	            	<button type="button" onClick="countGood()">GOOD</button>
+	            	<button type="button" onClick="countGood()" class="btn btn-warning">GOOD</button>
 	            </div>
 	            <br>
 	            <div th:each="goodchat : ${goodchats}">
@@ -43,7 +47,7 @@
 	    
 	        <div class="col" id="chat">
 				<div class="ml-2">
-	            	<button type="button" onClick="countBad()">BAD</button>
+	            	<button type="button" onClick="countBad()" class="btn btn-info">BAD</button>
 	            </div>
 	            <br>
 	            <div th:each="badchat : ${badchats}">
