@@ -4,28 +4,39 @@
         <link rel="stylesheet" href="css/header.css">
     </head>
     <body>
-        <!-- <header th:fragment="header" class="header">
-            <img src="" alt="ロゴ" class="left element">
-            <a href="/main" class="left element">ホーム</a>
-            <a th:href="'/profile/' + ${#authentication.principal.user.id}" class="left element">ユーザー</a>
-            <a href="/fortune" class="left element">あげあげ運勢</a>
-    
-            <a href="/loginForm" class="right element">ログイン</a>
-    	    <form th:action="@{/logout}" method="post" class="right element">
-    	        <input type="submit" value="ログアウト" class="right element"/>
-    	    </form>
-            <a href="/register" class="right element">ユーザー登録</a>
-        </header>-->
-        
         <header th:fragment="header">
-            <div class="d-flex">
-                <div>
-                    <div>
-                        <img th:src="@{/images/logo/murasaki.png}" width="50" height="50">
+            <div class="container-fluid header-fixed w-100">
+                <div class="d-flex justify-content-between w-100 header-absolute">
+                    <div class="d-flex align-items-center">
+                        <div class="mx-2">
+                            <img th:src="@{/images/logo/header_logo.jpg}" width="50" height="50">
+                        </div>
+                        <div class="mx-2">
+                            <a href="/main" class="text-decoration-none text-body">ホーム</a>
+                        </div>
+                        <div class="mx-2">
+                            <a href="/profile" class="text-decoration-none text-body">プロフィール</a>
+                        </div>
+                        <div class="mx-2">
+                            <a href="/fortune" class="text-decoration-none text-body">あげあげ運勢</a>
+                        </div>
                     </div>
-                </div>
-                <div>
+
+
+                    <div class="d-flex align-items-center" th:if="${#authentication.principal != 'anonymousUser'}">
+                        <form th:action="@{/logout}" method="POST" class="mx-2">
+                            <input type="submit" class="btn btn-secondary btn-sm" value="ログアウト"/>
+                        </form>
+                    </div>
                     
+                    <div class="d-flex align-items-center" th:unless="${#authentication.principal != 'anonymousUser'}">
+                        <form th:action="@{/loginForm}" method="GET">
+                            <input type="submit" class="btn btn-secondary btn-sm" value="ログイン"/>
+                        </form>
+                        <form th:action="@{/register}" method="GET" class="mx-2">
+                            <input type="submit" class="btn btn-outline-secondary btn-sm" value="ユーザー登録"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         </header>

@@ -1,15 +1,21 @@
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  .header{
-    
-    padding: 10px 20px;
-  }
-  .right{
-    float: right;
-  }
-  .element {
-      margin: 0 20px;
-    }
-    
+header {
+    width: 100%;
+    height: 60px;
+}
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 60px;
+    box-shadow: 0px 3px 15px -5px #777777;
+    background-color: #fff;
+}
+.header-absolute {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}

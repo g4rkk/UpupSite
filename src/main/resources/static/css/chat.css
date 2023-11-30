@@ -9,9 +9,7 @@
 .chat-post button {
     min-width: 60px;
 }
-#chat-wrap {
-    padding-top: 95px;
-}
+
 
 
 
@@ -29,7 +27,7 @@
 
 .genre {
     position: fixed;
-    top: 50px;
+    top: 60px;
     left: 0;
     background-color: #fff;
     height: 45px;
