@@ -1,7 +1,7 @@
 
-        .title{
-            display: flex;
-            justify-content: center;
+        span{
+
+            background: linear-gradient(transparent 60%, rgb(249,249,1, 0.9) 60%);
         }
         .text{
             display: flex;
@@ -12,14 +12,21 @@
             justify-content: center;
         }
 
-        .child {
-            width: 300px;
+        #chat{
             border: solid;
             border-radius: 25px;
             padding: 15px;
-            padding-left: 30px;
-            padding-right: 30px;
+/*            padding-left: 30px;*/
+/*            padding-right: 30px;*/
             margin: 30px;
-            margin-top: 50px;
-            text-align: center;
+/*            margin-top: 50px;*/
         }
+        
+        .message{
+			opacity: 0.8;
+		}
+		
+		.genre-type {
+			display: flex;
+            justify-content: center;
+		}

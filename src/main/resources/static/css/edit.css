@@ -1,0 +1,15 @@
+@charset "UTF-8";
+		#label{
+			display: flex;
+    		justify-content: center;
+		}
+
+		#chat{
+            border: solid;
+            border-radius: 25px;
+            padding: 15px;
+/*            padding-left: 30px;*/
+/*            padding-right: 30px;*/
+            margin: 30px;
+/*            margin-top: 50px;*/
+        }
