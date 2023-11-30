@@ -40,6 +40,10 @@ function showChatMessage(responseBody) {
     var newCreateDiv = document.createElement('div');
     newCreateDiv.classList.add('chat-content', 'mt-3');
     newCreateDiv.setAttribute('id', "chat_" + responseBody.id);
+    
+    if (!responseBody.image) {
+        responseBody.image = "/images/icons/no_icon.png";
+    }
 
     if (responseBody.userId == loginUserId) {
 
@@ -105,6 +109,10 @@ function showReplyMessage(responseBody) {
     var newCreateDiv = document.createElement('div');
     newCreateDiv.classList.add('reply-content', 'mt-2', 'ms-5');
     newCreateDiv.setAttribute('id', "reply_" + responseBody.id);
+    
+    if (!responseBody.image) {
+        responseBody.image = "/images/icons/no_icon.png";
+    }
     
     if (responseBody.userId == loginUserId) {
 

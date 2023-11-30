@@ -15,7 +15,12 @@
             <div th:each="goodChat : ${goodChats}" class="chat-content mt-3" th:id="'chat_' + ${goodChat.id}">
                 <div class="d-flex align-items-start">
                     <div class="me-3">
-                        <img th:src="${goodChat.chatUser.image}" alt="icon" width="50" height="50" class="rounded-circle">
+                        <th:block th:if="${goodChat.chatUser.image}">
+                            <img th:src="${goodChat.chatUser.image}" alt="icon" width="50" height="50" class="rounded-circle">
+                        </th:block>
+                        <th:block th:unless="${goodChat.chatUser.image}">
+                            <img src="/images/icons/no_icon.png" alt="icon" width="50" height="50" class="rounded-circle">
+                        </th:block>
                     </div>
                     <div>
                         <div class="name-style" th:text="${goodChat.chatUser.name}"></div>
