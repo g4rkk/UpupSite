@@ -25,6 +25,11 @@
 }
 
 
+
+.genre-heigth {
+    width: 100%;
+    height: 45px;
+}
 .genre {
     position: fixed;
     top: 60px;

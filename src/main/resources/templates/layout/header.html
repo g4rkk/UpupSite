@@ -6,10 +6,12 @@
     <body>
         <header th:fragment="header">
             <div class="container-fluid header-fixed w-100">
-                <div class="d-flex justify-content-between w-100 header-absolute">
+                <div class="d-flex justify-content-between w-100 header-absolute px-2">
                     <div class="d-flex align-items-center">
                         <div class="mx-2">
-                            <img th:src="@{/images/logo/header_logo.jpg}" width="50" height="50">
+                            <a href="main">
+                                <img th:src="@{/images/logo/header_logo.jpg}" width="50" height="50" class="rounded">
+                            </a>
                         </div>
                         <div class="mx-2">
                             <a href="/main" class="text-decoration-none text-body">ホーム</a>
@@ -21,12 +23,16 @@
                             <a href="/fortune" class="text-decoration-none text-body">あげあげ運勢</a>
                         </div>
                     </div>
-
-
+                    
+                    
+                    
                     <div class="d-flex align-items-center" th:if="${#authentication.principal != 'anonymousUser'}">
                         <form th:action="@{/logout}" method="POST" class="mx-2">
                             <input type="submit" class="btn btn-secondary btn-sm" value="ログアウト"/>
                         </form>
+                        <div class="mx-2">
+                            <img th:src="${#authentication.principal.user.image}" width="50" height="50" class="border rounded-circle">
+                        </div>
                     </div>
                     
                     <div class="d-flex align-items-center" th:unless="${#authentication.principal != 'anonymousUser'}">
