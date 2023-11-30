@@ -3,11 +3,13 @@ package com.example.controller;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.service.FortuneService;
+import com.example.service.LoginUser;
 
 @Controller
 public class FortuneController {
@@ -20,7 +22,7 @@ public class FortuneController {
     }
 
     @GetMapping("/fortune")
-    public String fortune(Model model) {
+    public String fortune(@AuthenticationPrincipal LoginUser loginUser, Model model) {
         int MONEY = ThreadLocalRandom.current().nextInt(50, 101);
         int JOB = ThreadLocalRandom.current().nextInt(50, 101);
         int LOVE = ThreadLocalRandom.current().nextInt(50, 101);
@@ -29,7 +31,7 @@ public class FortuneController {
         model.addAttribute("workLuck", JOB);
         model.addAttribute("loveLuck", LOVE);
         
-        this.fortuneService.update(2, MONEY, JOB, LOVE);
+        this.fortuneService.update(loginUser.getUser().getId(), MONEY, JOB, LOVE);
 
         return "fortune";
     }
