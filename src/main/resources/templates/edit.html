@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-  <meta charset="UTF-8">
-  <title>ユーザー設定画面</title>
+	<meta charset="UTF-8">
+	<title>ユーザー設定画面</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/header.css">
@@ -10,76 +10,84 @@
 </head>
 <body>
 	<header th:replace="~{layout/header :: header}"></header> 
-  <h1 id="label">ユーザー情報設定ページ</h1>
- <form th:action="@{/edit}" method="post" id="chat">
-    <div id="label">
-      <label>ユーザー名を変更します</label>
-    </div>
-    
-    <div id="label">
-      <input th:value="${user.name}" type="text" placeholder="ユーザー名を変更します" name="name">
-    </div>
-    
- 	<div id="label">
-    <label>アイコンを変更します</label>
-    </div>
-    
-    <div class="row row-cols-3" id="label">
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster01.png" checked>
-	    <img src="/images/icons/monster01.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster02.png">
-	    <img src="/images/icons/monster02.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster03.png">
-	    <img src="/images/icons/monster03.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster04.png">
-	    <img src="/images/icons/monster04.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster05.png">
-	    <img src="/images/icons/monster05.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	  
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster06.png">
-	    <img src="/images/icons/monster06.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster10.png">
-	    <img src="/images/icons/monster10.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster11.png">
-	    <img src="/images/icons/monster11.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-	  	  
-	  <div class="col">
-	    <input type="radio" name="image" id="image1" value="/images/icons/monster12.png">
-	    <img src="/images/icons/monster12.png" alt="Image 1" width="50" height="50" class="rounded-circle">
-	  </div>
-    </div>
-
-  	<div id="label">
-      <label>本日の意気込み</label>
-   </div>
-    <div id="label">
-      <input th:value="${user.motivation}" type="text" placeholder="本日の意気込みを設定します" name="motivation" width="100">
-    </div>
-    <div id="label">
-      <input type="submit" value="更新">
-    </div>
+	<h1 id="label">
+		<span>ユーザー情報設定ページ</span>
+	</h1>
+<form th:action="@{/edit}" method="post">
+		<div class="row">
+			<div class="col"></div>
+		<div class="col-6" id="chat">
+			<div id="label1" class="row">
+				<label>ユーザー名を変更します</label>
+			</div>
+			
+			<div id="label" class="row">
+				<input th:value="${user.name}" type="text" placeholder="ユーザー名を変更します" name="name">
+			</div>
+			
+			<div id="label1" class="row">
+				<label>アイコンを変更します</label>
+		    </div>
+		    
+		    <div class="row row-cols-3" id="label">
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster01.png" checked>
+					<img src="/images/icons/monster01.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster02.png">
+					<img src="/images/icons/monster02.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster03.png">
+					<img src="/images/icons/monster03.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster04.png">
+					<img src="/images/icons/monster04.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster05.png">
+					<img src="/images/icons/monster05.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster06.png">
+					<img src="/images/icons/monster06.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster10.png">
+					<img src="/images/icons/monster10.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+			
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster11.png">
+					<img src="/images/icons/monster11.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+				</div>
+				  
+				<div class="col">
+					<input type="radio" name="image" id="image1" value="/images/icons/monster12.png">
+					<img src="/images/icons/monster12.png" alt="Image 1" width="50" height="50" class="rounded-circle">
+			  </div>
+		    </div>
+		
+		  	<div id="label1" class="row">
+		      <label>本日の意気込み</label>
+		   </div>
+		    <div id="label" class="row">
+		      <input th:value="${user.motivation}" type="text" placeholder="本日の意気込みを設定します" name="motivation" width="100">
+		    </div>
+		    <div id="label">
+		      <input type="submit" value="更新" class="btn btn-primary">
+		    </div>
+	 	</div>
+	 	<div class="col"></div>
+ 	</div>
     
   </form>
   
