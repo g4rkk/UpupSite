@@ -8,9 +8,9 @@ body {
     max-width: 600px;
     margin: auto;
     padding: 30px; /* 调整内边距 */
-    border: 2px solid #ddd; /* 添加边框 */
-    border-radius: 10px; /* 边框圆角 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    /* border: 2px solid #ddd; 已删除边框 */
+    /* border-radius: 10px; 已删除边框圆角 */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 已删除阴影 */
     background-color: #fff; /* 设置背景颜色 */
 }
 
@@ -70,3 +70,14 @@ button.btn {
     }
 }
 
+.footer {
+    position: fixed;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* 或者Footer的实际高度 */
+    /* 其他样式，如文本对齐、颜色等 */
+    z-index: 1000; /* 确保Footer在其他内容之上 */
+   
+}

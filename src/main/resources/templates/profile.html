@@ -3,7 +3,7 @@
 <head>
     <title>プロフィール</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/ProfileStyle.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -85,7 +85,12 @@
     </script>
 
     <script src="/js/Profile.js"></script>
-    <div th:replace="footer :: footer"></div>
+    
+        <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Copyright © 2023 Technopro Design TeamB All rights reserved.</span>
+        </div>
+    </footer>
 
 </body>
 </html>

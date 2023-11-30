@@ -30,3 +30,16 @@
 			display: flex;
             justify-content: center;
 		}
+
+		.footer {
+    position: fixed;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px; /* 或者Footer的实际高度 */
+    /* 其他样式，如文本对齐、颜色等 */
+    z-index: 1000; /* 确保Footer在其他内容之上 */
+   
+}
+
