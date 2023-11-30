@@ -6,7 +6,7 @@
         .text{
             display: flex;
             justify-content: center;
-            margin-top:50px;
+            margin-top:10px;
         }
         .main_chat{
             display: flex;
@@ -39,8 +39,12 @@
 			margin-top:10px;
 		}
 		
-		.btn{
-			background-color: gray;
+		#btn1{
+			background-color: rgb(249,249,1, 0.9);
+		}
+		
+		#btn2{
+			background-color: rgb(66,132,242, 0.7);
 		}
 
 		.footer {
