@@ -15,11 +15,14 @@
             <h1>プロフィール</h1>
             <div class="underline"></div> <!-- 新增横线的div -->
             
-          <a href="/edit" class="btn btn-secondary mt-3">ユーザー設定</a>
+          <a href="/edit" class="btn btn-secondary text-end mt-3">ユーザー設定</a>
 
         </div>
 
         <!-- Profile Details -->
+        <div>
+			<img th:src="${profile.image}" class="rounded-circle" width="50" heigth="50">
+		</div>
         <div class="profile-detail">
             <strong>名前:</strong> <span th:text="${profile.name}">name</span>
         </div>
@@ -36,18 +39,37 @@
             <button class="btn btn-danger" onclick="updateCount('bad')">Bad</button>
         </div>
         
-        <div class="choice-display">
-            <div>goodchoice</div>
-            <div th:text="${profile.choiceGood}"></div>
-        </div>
+        <div class="d-flex justify-content-center">
+			<div class="choice-display">
+	            <div>goodchoice</div>
+	            <div th:text="${profile.choiceGood}"></div>
+	        </div>
+	        
+	        <div class="choice-display">
+	            <div>badchoice</div>
+	            <div th:text="${profile.choiceBad}"></div>
+	        </div>
+		</div>
         
-        <div class="choice-display">
-            <div>badchoice</div>
-            <div th:text="${profile.choiceBad}"></div>
-        </div>
+        
+        <div>
+			<div>金運</div>
+            <div th:text="${profile.money}"></div>
+		</div>
+		
+		<div>
+			<div>仕事運</div>
+            <div th:text="${profile.job}"></div>
+		</div>
+				
+		<div>
+			<div>恋愛運</div>
+            <div th:text="${profile.love}"></div>
+		</div>
 
         <!-- Canvas for the Doughnut Chart -->
         <canvas id="goodBadDoughnutChart"></canvas>
+        <canvas id="fortuneChart"></canvas>
     </div>
     
     <script th:inline="javascript">
@@ -56,9 +78,14 @@
         /*]]>*/
         const goodChoise = /*[[${profile.choiceGood}]]*/"goodChoice";
         const badChoise = /*[[${profile.choiceBad}]]*/"badChoice";
+        
+        let money = /*[[${profile.money}]]*/"money";
+		let job = /*[[${profile.job}]]*/"job";
+		let love = /*[[${profile.love}]]*/"love";
     </script>
 
     <script src="/js/Profile.js"></script>
     <div th:replace="footer :: footer"></div>
+
 </body>
 </html>

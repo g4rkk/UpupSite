@@ -33,6 +33,8 @@ const goodBadDoughnutChart = new Chart(ctx, {
 });
 
 
+
+
     // 全局函数来更新 Good 或 Bad 计数
     window.updateCount = function(type) {
         const increment = type === 'good' ? 1 : -1;
