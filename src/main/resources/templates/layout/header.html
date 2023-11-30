@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/header.css">
-</head>
-<body>
-    <header th:fragment="header" class="header">
-        <img src="" alt="ロゴ" class="left element">
-        <a href="/main" class="left element">ホーム</a>
-        <a th:href="'/profile/' + ${#authentication.principal.user.id}" class="left element">ユーザー</a>
-        <a href="/fortune" class="left element">あげあげ運勢</a>
-
-        <a href="/loginForm" class="right element">ログイン</a>
-	    <form th:action="@{/logout}" method="post" class="right element">
-	        <input type="submit" value="ログアウト" class="right element"/>
-	    </form>
-        <a href="/users/register" class="right element">ユーザー登録</a>
-    </header>
-</body>
+    <head>
+        <link rel="stylesheet" href="css/header.css">
+    </head>
+    <body>
+        <!-- <header th:fragment="header" class="header">
+            <img src="" alt="ロゴ" class="left element">
+            <a href="/main" class="left element">ホーム</a>
+            <a th:href="'/profile/' + ${#authentication.principal.user.id}" class="left element">ユーザー</a>
+            <a href="/fortune" class="left element">あげあげ運勢</a>
+    
+            <a href="/loginForm" class="right element">ログイン</a>
+    	    <form th:action="@{/logout}" method="post" class="right element">
+    	        <input type="submit" value="ログアウト" class="right element"/>
+    	    </form>
+            <a href="/register" class="right element">ユーザー登録</a>
+        </header>-->
+        
+        <header th:fragment="header">
+            <div class="d-flex">
+                <div>
+                    <div>
+                        <img th:src="@{/images/logo/murasaki.png}" width="50" height="50">
+                    </div>
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </header>
+    </body>
 </html>

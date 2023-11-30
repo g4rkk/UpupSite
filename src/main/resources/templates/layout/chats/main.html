@@ -67,21 +67,23 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer th:src="@{/js/formAction.js}"></script>
+    <script defer th:src="@{/js/chats/formAction.js}"></script>
+    <script defer th:src="@{/js/chats/getMessageId.js}"></script>
+    <script defer th:src="@{/js/chats/templetes.js}"></script>
+    <script defer th:src="@{/js/chats/likes/likeAction.js}"></script>
 
     <th:block th:if="${goodChats}">
-        <script defer th:src="@{/js/goodLikeHandle.js}"></script>
-        <script defer th:src="@{/js/goodLikeAction.js}"></script>
-        <script defer th:src="@{/js/goodDeleteHandle.js}"></script>
-        <script defer th:src="@{/js/goodDeleteAction.js}"></script>
-        <script defer th:src="@{/js/goodChat.js}"></script>
+        <script defer th:src="@{/js/chats/likes/likeSendGood.js}"></script>
+        <script defer th:src="@{/js/chats/messages/messageDeleteGood.js}"></script>
+        <script defer th:src="@{/js/chats/messages/messageShowGood.js}"></script>
+        <script defer th:src="@{/js/chats/messages/messageSendGood.js}"></script>
     </th:block>
     
     <th:block th:if="${badChats}">
-        <script defer th:src="@{/js/badLikeHandle.js}"></script>
-        <script defer th:src="@{/js/badLikeAction.js}"></script>
-        <script defer th:src="@{/js/badDeleteAction.js}"></script>
-        <script defer th:src="@{/js/badChat.js}"></script>
+        <script defer th:src="@{/js/chats/likes/likeSendBad.js}"></script>
+        <script defer th:src="@{/js/chats/messages/messageDeleteBad.js}"></script>
+        <script defer th:src="@{/js/chats/messages/messageShowBad.js}"></script>
+        <script defer th:src="@{/js/chats/messages/messageSendBad.js}"></script>
     </th:block>
     
     
