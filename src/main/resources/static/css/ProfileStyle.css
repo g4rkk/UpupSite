@@ -1,121 +1,72 @@
 @charset "UTF-8";
 body {
-  font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.profile-container {
-  width: 300px;
-  border: 1px solid #000;
-  padding: 10px;
-  margin: auto;
-}
-
-.profile-picture {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: auto;
-}
-
-.profile-info {
-  text-align: center;
-}
-
-.profile-rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.rating-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: relative;
-}
-
-.rating-circle::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: blue; /*  'Good' */
-  border-radius: 100px 0 0 100px;
-}
-
-.rating-circle::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: red; /*  'Bad' */
-  border-radius: 0 100px 100px 0;
-}
-
-.profile-rating-text {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  line-height: 100px;
-  font-weight: bold;
-  color: #fff;
-}
-
-
-.chart {
+.container {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid #000;
-    padding: 10px;
+    margin: auto;
+    padding: 30px; /* 调整内边距 */
+    border: 2px solid #ddd; /* 添加边框 */
+    border-radius: 10px; /* 边框圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    background-color: #fff; /* 设置背景颜色 */
 }
 
-.bars {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 200px; /* チャートの高さ */
-    margin: 0;
+.profile-header {
+   position: relative; 
+   display: inline-block; 
+   margin-bottom: 60px; 
 }
 
-.bar {
-    width: 20%; /* バーの幅 */
-    background-color: #4CAF50; /* バーの色 */
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    transition: height 0.5s;
+.profile-detail {
+    margin-top: 40px; 
+    margin-bottom: 20px; 
+    margin-left: 20px; /* 调整左右外边距 */
+    margin-right: 20px; 
 }
 
-.bar span {
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
-    text-align: center;
+/* 调整按钮样式 */
+button.btn {
+  width: 120px;
+  height: 40px;
+  margin: 10px 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.bar::before {
-    content: attr(data-value) '%';
-    margin-bottom: 5px;
+.buttons-container { 
+  margin-bottom: 30px;
+  margin-left: 20px; /* 调整左右外边距 */
+  margin-right: 20px; 
 }
 
-/* JavaScriptを使用してバーの高さを動的に設定します */
-.bar[data-value="60"] { height: 60%; }
-.bar[data-value="80"] { height: 80%; }
-.bar[data-value="75"] { height: 75%; }
+.choice-display { 
+  margin-bottom: 30px;
+  margin-left: 20px; /* 调整左右外边距 */
+  margin-right: 20px; 
+}
 
 #goodBadDoughnutChart {
     width: 400px;
     height: 400px;
-    display: block; /* 防止默认的内联行为 */
-    margin: auto; /* 居中显示 */
 }
 
+.underline {
+    width: 90%; 
+    height: 10px; 
+    background-color: yellow; 
+    margin: 0 auto; 
+    margin-top: -25px; 
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px; /* 减少内边距 */
+    }
+}
 

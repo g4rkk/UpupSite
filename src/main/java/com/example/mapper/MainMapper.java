@@ -12,6 +12,7 @@ import com.example.entity.GoodChat;
 public interface MainMapper {
     public List<GoodChat> findGoodchatRandom();
     public List<BadChat> findBadchatRandom();
-    public  void choise_good_update(Integer id);
-    public  void choise_bad_update(Integer id);
+    public  void choice_good_update(Integer id);
+    public  void choice_bad_update(Integer id);
+	public void choice_good_update1(Integer id);
 }

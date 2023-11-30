@@ -13,8 +13,8 @@
         <result column="PASSWORD" property="password"/>
         <result column="NAME" property="name"/>
 
-    <result column="CHOISE_GOOD" property="choiseGood"/>
-    <result column="CHOISE_BAD" property="choiseBad"/>
+    <result column="CHOICE_GOOD" property="choiceGood"/>
+    <result column="CHOICE_BAD" property="choiceBad"/>
 
         <result column="BIRTHDAY" property="birthday"/>
         <result column="IMAGE" property="image"/>
@@ -32,7 +32,7 @@
 <!-- 更新 Good 和 Bad 计数 -->
 <update id="updateGoodBadCount">
     UPDATE USERS
-    SET CHOISE_GOOD = #{goodCount}, CHOISE_BAD = #{badCount}
+    SET CHOICE_GOOD = #{goodCount}, CHOICE_BAD = #{badCount}
     WHERE ID = #{id}
 </update>
 

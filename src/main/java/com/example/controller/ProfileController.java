@@ -22,6 +22,7 @@ public class ProfileController {
     @GetMapping("/profile/{id}")
     public String getProfile(@PathVariable("id") Integer id, Model model) {
         Profile profile = profileService.getProfile(id);
+        
         if (profile == null) {
             // Option 1: Redirect to an error page
             // return "redirect:/error-page";

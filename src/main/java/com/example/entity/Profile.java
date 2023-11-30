@@ -7,8 +7,8 @@ public class Profile {
     private String email;
     private String password;
     private String name;
-    private Integer choiseGood; // 而非 choiceGood
-    private Integer choiseBad;  // 而非 choiceBad
+    private Integer choiceGood; 
+    private Integer choiceBad;  
     private Date birthday;
     private String image;
     private Integer money;
@@ -40,21 +40,22 @@ public class Profile {
 	public void setName(String name) {
 		this.name = name;
 	}
-    public Integer getChoiseGood() {
-        return choiseGood;
-    }
+	public Integer getChoiceGood() {
+	    return choiceGood;
+	}
 
-    public void setChoiseGood(Integer choiseGood) {
-        this.choiseGood = choiseGood;
-    }
+	public void setChoiceGood(Integer choiceGood) {
+	    this.choiceGood = choiceGood;
+	}
 
-    public Integer getChoiseBad() {
-        return choiseBad;
-    }
+	public Integer getChoiceBad() {
+	    return choiceBad;
+	}
 
-    public void setChoiseBad(Integer choiseBad) {
-        this.choiseBad = choiseBad;
-    }
+	public void setChoiceBad(Integer choiceBad) {
+	    this.choiceBad = choiceBad;
+	}
+
 	public Date getBirthday() {
 		return birthday;
 	}

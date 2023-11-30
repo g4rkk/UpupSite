@@ -3,27 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>あげあげ運勢</title>
+     <div class="underline"></div> <!-- 添加黄线 -->
     <link rel="stylesheet" href="/css/FortuneStyle.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-	<header th:replace="~{layout/header :: header}"></header> 
+
+    <header th:replace="~{layout/header :: header}"></header> 
+    <div class="content-wrap">
     <div class="container">
-		
-			<h2>あげあげ運勢</h2>
-	        <div class="chart-container">
-	            <canvas id="fortuneChart"></canvas>
-	        </div>
-	        <button type="submit" onclick="location.reload()">あなたの運勢を更新</button>
-		
-        
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">あげあげ運勢</h2>
+                <div class="title-underline"></div> <!-- Yellow line under title -->
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <div class="chart-container text-center">
+                    <canvas id="fortuneChart"></canvas>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary mt-3" onclick="location.reload()">あなたの運勢を更新</button>
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <div id="moneyLuck" style="display: none;" th:text="${moneyLuck}"></div>
     <div id="workLuck" style="display: none;" th:text="${workLuck}"></div>
     <div id="loveLuck" style="display: none;" th:text="${loveLuck}"></div>
 
     <script src="/js/FortuneJavascript.js"></script>
+
+       <footer class="footer">
+        <div class="container">
+            <span class="text-muted">© 2023 Technopro Design TeamB ©All rights reserved.</span>
+        </div>
+    </footer>
 </body>
 </html>

@@ -8,8 +8,8 @@
         <result column="EMAIL" property="email"/>
         <result column="PASSWORD" property="password"/>
         <result column="NAME" property="name"/>
-        <result column="CHOISE_GOOD" property="choiseGood"/>
-        <result column="CHOISE_BAD" property="choiseBad"/>
+        <result column="choice_GOOD" property="choiceGood"/>
+        <result column="choice_BAD" property="choiceBad"/>
         <result column="BIRTHDAY" property="birthday"/>
         <result column="IMAGE" property="image"/>
         <result column="MONEY" property="money"/>
@@ -57,5 +57,13 @@
         WHERE
             ID = #{user_id}
     </select>
+    
+    <insert id="registerUser" useGeneratedKeys="true" keyColumn="ID" keyProperty="id">
+        INSERT INTO USERS (
+            ID, EMAIL, PASSWORD, NAME
+        ) VALUES (
+            USERS_ID_SEQ.nextval, #{email}, #{password}, #{name}
+        )
+    </insert>
 
 </mapper>

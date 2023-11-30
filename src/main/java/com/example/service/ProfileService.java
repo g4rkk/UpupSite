@@ -16,7 +16,9 @@ public class ProfileService {
     }
 
     public Profile getProfile(Integer id) {
-        return profileMapper.getUserProfileById(id);
+    	Profile profile = this.profileMapper.getUserProfileById(id);
+    	
+        return profile;
     }
     
     public boolean updateGoodBadCount(Integer id, Integer goodCount, Integer badCount) {

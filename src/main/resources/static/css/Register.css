@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-form {
+.form {
     width: 60%; /* 增大表单宽度 */
     padding: 40px; /* 增大内边距 */
     margin-top: 5vh; /* 添加上边距，稍微下移表单 */

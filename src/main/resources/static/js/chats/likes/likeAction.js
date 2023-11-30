@@ -1,15 +1,13 @@
-const csrfToken = document.querySelector("meta[name='_csrf']").content;
-
 function chatLikeAction(messageId, likeData) {
     var likeDataParent = likeData.parentElement;
     const isActive = likeDataParent.classList.contains("active");
     
     if (isActive) {
         likeDataParent.classList.remove("active");
-        deleteChatLike(messageId, likeDataParent);
+        deleteChatLikeSend(messageId, likeDataParent);
     } else {
         likeDataParent.classList.add("active");
-        addChatLike(messageId, likeDataParent);
+        addChatLikeSend(messageId, likeDataParent);
     }
 }
 
@@ -19,9 +17,9 @@ function replyLikeAction(messageId, likeData) {
     
     if (isActive) {
         likeDataParent.classList.remove("active");
-        deleteReplyLike(messageId, likeDataParent);
+        deleteReplyLikeSend(messageId, likeDataParent);
     } else {
         likeDataParent.classList.add("active");
-        addReplyLike(messageId, likeDataParent);
+        addReplyLikeSend(messageId, likeDataParent);
     }
 }

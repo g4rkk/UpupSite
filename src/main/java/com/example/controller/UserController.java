@@ -1,34 +1,41 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.form.UserForm;
 import com.example.model.RegistrationForm;
 import com.example.service.UserService;
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
 
+    private final UserService userService;
+    
     @Autowired
-    private UserService userService;
-
-    @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody RegistrationForm form) {
-        userService.registerUser(form);
-        return ResponseEntity.ok("ユーザー登録成功しました！");
+    public UserController(UserService userService) {
+    	this.userService = userService;
     }
-
+    
     @GetMapping("/register")
-    public String showRegistrationForm(RegistrationForm registrationForm, Model model) {
+    public String showRegistrationForm(RegistrationForm registrationForm, UserForm userForm, Model model) {
     	model.addAttribute("registrationForm", registrationForm);
+    	model.addAttribute("userForm", userForm);
         return "registerform";
+    }
+    
+    @PostMapping("/register")
+    public String registerUser(UserForm userForm, Model model) {
+    	try {
+    		userService.registerUser(userForm);
+            return "redirect:/main";
+    	} catch (Exception e) {
+    		 model.addAttribute("error",  "このメールアドレスは既に登録されています。");
+             return "registerForm";
+    	}
     }
 
 }
