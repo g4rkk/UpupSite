@@ -5,7 +5,7 @@ function iconAction() {
     nav.classList.add('active');
 }
 
-function closeAction() {
+function menuCloseAction() {
     nav.classList.remove('active');
 }
 
