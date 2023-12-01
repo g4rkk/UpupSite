@@ -19,63 +19,68 @@
     <div class="container text-center">
         <div class="profile-header">
             <h1>プロフィール</h1>
-            <div class="underline"></div> <!-- 新增横线的div -->
-            
-          <a href="/edit" class="btn btn-secondary text-end mt-3">ユーザー設定</a>
+           	<div class="underline"></div> <!-- 新增横线的div -->
 
         </div>
-
-        <!-- Profile Details -->
-        <div>
-			<img th:src="${profile.image}" class="rounded-circle" width="50" heigth="50">
-		</div>
-        <div class="profile-detail">
-            <strong>名前:</strong> <span th:text="${profile.name}">name</span>
-        </div>
-        <div class="profile-detail">
-            <strong>誕生日:</strong> <span th:text="${profile.birthday}">Birthday</span>
-        </div>
-        <div class="profile-detail">
-            <strong>本日の意気込み:</strong> <span th:text="${profile.motivation}">Motivation</span>
-        </div>
-
-        <!-- Buttons for Good and Bad Counts -->
-        <div class="buttons-container">
-            <button class="btn btn-primary" onclick="updateCount('good')">Good</button>
-            <button class="btn btn-danger" onclick="updateCount('bad')">Bad</button>
-        </div>
         
-        <div class="d-flex justify-content-center">
-			<div class="choice-display">
-	            <div>goodchoice</div>
-	            <div th:text="${profile.choiceGood}"></div>
-	        </div>
-	        
-	        <div class="choice-display">
-	            <div>badchoice</div>
-	            <div th:text="${profile.choiceBad}"></div>
-	        </div>
-		</div>
-        
-        
-        <div>
-			<div>金運</div>
-            <div th:text="${profile.money}"></div>
-		</div>
+        <div class="profile-main">
+			<div class="profile-main-left">
+		        <!-- Profile Details -->
+		        <div class="image">
+					<img th:src="${profile.image}" class="rounded-circle" width="50" heigth="50">
+				</div>
+		        <div class="text">
+		            <strong>名前:</strong> <span th:text="${profile.name}">name</span>
+		        </div>
+		        <div class="text">
+		            <strong>誕生日:</strong> <span th:text="${profile.birthday}">Birthday</span>
+		        </div>
+		        <div class="text">
+		            <strong>本日の意気込み:</strong> <span th:text="${profile.motivation}">Motivation</span>
+		        </div>
 		
-		<div>
-			<div>仕事運</div>
-            <div th:text="${profile.job}"></div>
+		
+		        <div class="text">
+					<strong>金運:</strong><span th:text="${profile.money}"></span>
+				</div>
+				
+				<div class="text">
+					<strong>仕事運:</strong><span th:text="${profile.job}"></span>
+				</div>
+						
+				<div class="text">
+					<strong>恋愛運:</strong><span th:text="${profile.love}"></span>
+				</div>
+				 <a href="/edit" class="btn btn-secondary btn-user">ユーザー設定</a>
+			 </div>
+			 <div class="profile-main-right">
+		        <!-- Buttons for Good and Bad Counts -->
+		        <div class="buttons-container">
+		            <button class="btn btn-primary" onclick="updateCount('good')">Good</button>
+		            <button class="btn btn-danger" onclick="updateCount('bad')">Bad</button>
+		        </div>
+		        
+		        <div class="d-flex justify-content-center">
+					<div class="choice-display">
+			            <div>goodchoice</div>
+			            <div th:text="${profile.choiceGood}"></div>
+			        </div>
+			        
+			        <div class="choice-display">
+			            <div>badchoice</div>
+			            <div th:text="${profile.choiceBad}"></div>
+			        </div>
+				 </div>
+				   <!-- Canvas for the Doughnut Chart -->
+       			 <canvas id="goodBadDoughnutChart"></canvas>
+       
+			 </div>
 		</div>
 				
-		<div>
-			<div>恋愛運</div>
-            <div th:text="${profile.love}"></div>
-		</div>
+        
 
-        <!-- Canvas for the Doughnut Chart -->
-        <canvas id="goodBadDoughnutChart"></canvas>
-        <canvas id="fortuneChart"></canvas>
+
+      
     </div>
     
     <script th:inline="javascript">
