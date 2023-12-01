@@ -2,11 +2,13 @@
         span{
 
             background: linear-gradient(transparent 60%, rgb(249,249,1, 0.9) 60%);
+            font-weight: bolder;
         }
         .text{
             display: flex;
             justify-content: center;
             margin-top:10px;
+            text-align: center;
         }
         .main_chat{
             display: flex;
