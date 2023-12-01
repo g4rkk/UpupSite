@@ -38,6 +38,8 @@ function connect() {
 
 
 function showChatMessage(responseBody) {
+    console.log(responseBody);
+    
     var newCreateDiv = document.createElement('div');
     newCreateDiv.classList.add('chat-content', 'mt-3');
     newCreateDiv.setAttribute('id', "chat_" + responseBody.id);

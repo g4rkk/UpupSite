@@ -12,6 +12,12 @@ body {
   z-index: 2;
 }
 
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
@@ -26,4 +32,113 @@ body {
 
 .register-form {
     font-size: .8em;
+}
+
+
+
+/* header.cssを使用するとデザインが崩れるためheader.cssのCSSを書いてます */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 60px;
+    box-shadow: 0px 3px 15px -5px #777777;
+    background-color: #fff;
+}
+.header-absolute {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+
+#nav {
+    width: 380px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -380px;
+    z-index: 6;
+    padding-top: 13px;
+    background-color: #fff;
+    transition-duration: .5s;
+}
+
+#nav.active {
+    right: 0;
+    transition-duration: .5s;
+}
+
+
+#mask {
+    display: none;
+    transition-duration: .5s;
+}
+
+#nav.active + #mask {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+
+
+.square_btn {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #333; /* 枠の調整 */
+  background: #fff; /* ボタンの背景色 */
+}
+ 
+.square_btn::before, .square_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px; /* 棒の幅（太さ） */
+  height: 27px; /* 棒の高さ */
+  background: #333; /* バツ印の色 */
+}
+ 
+.square_btn::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+ 
+.square_btn::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+
+
+@media screen and (max-width: 840px) {
+    #nav {
+        width: 280px;
+    }
+}
+
+
+@media screen and (max-width: 680px) {
+    .responsive-remove {
+        display: none;
+    }
+    #nav {
+        width: 240px;
+    }
 }

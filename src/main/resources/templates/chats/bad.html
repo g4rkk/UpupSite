@@ -7,12 +7,14 @@
 </head>
 <body>
     <main>
-        <div class="genre w-100">
-            <h1 class="genre-type"><span class="bad-marker">Bad</span></h1> 
+        <div class="genre-heigth">
+            <div class="genre">
+                <h1 class="genre-type fw-bolder"><span class="bad-marker">Bad</span></h1> 
+            </div>
         </div>
         
         
-        <div id="chat-wrap">
+        <div id="chat-wrap" class="mb-4">
             <div th:each="badChat : ${badChats}" class="chat-content mt-3" th:id="'chat_' + ${badChat.id}">
                 <div class="d-flex align-items-start">
                     <div class="me-3">

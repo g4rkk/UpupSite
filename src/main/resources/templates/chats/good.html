@@ -7,11 +7,14 @@
 </head>
 <body>
     <main>
-        <div class="genre w-100">
-            <h1 class="genre-type"><span class="good-marker">Good</span></h1> 
+        <div class="genre-heigth">
+            <div class="genre">
+                <h1 class="genre-type fw-bolder"><span class="good-marker">Good</span></h1> 
+            </div>
         </div>
-            
-        <div id="chat-wrap">
+        
+        
+        <div id="chat-wrap" class="mb-4">
             <div th:each="goodChat : ${goodChats}" class="chat-content mt-3" th:id="'chat_' + ${goodChat.id}">
                 <div class="d-flex align-items-start">
                     <div class="me-3">
@@ -25,6 +28,7 @@
                     <div>
                         <div class="name-style" th:text="${goodChat.chatUser.name}"></div>
                         <div th:text="${goodChat.message}" th:attr="onclick='chatAction(' + ${goodChat.id} + ', \'' + ${goodChat.chatUser.name} + '\')'" class="cursor-pointer"></div>
+                        <div th:text="${#temporals.format(goodChat.createdAt, 'yyyy/MM/dd HH:mm')}" class="small-font fw-bolder text-secondary"></div>
                         
                         <div class="heart-position heart-action active" th:if="${#lists.contains(goodChat.goodChatLikes.![userId], #authentication.principal.user.id)}">
                             <div class="heart cursor-pointer" th:attr="onclick='chatLikeAction(' + ${goodChat.id} + ', this)'"></div>

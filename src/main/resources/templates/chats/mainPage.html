@@ -20,7 +20,10 @@
 	<link rel="stylesheet" href="css/mainPage.css">
 </head>
 <body>
-     <header th:replace="~{layout/header :: header}"></header> 
+     <header th:replace="~{layout/header :: header}"></header>
+     <nav th:replace="~{layout/nav :: nav}"></nav>
+     <div id="mask"></div>
+     
     <h1 class="genre-type">
 		<span>UP UP SITE</span>
 	</h1>
@@ -62,5 +65,7 @@
             <span class="text-muted">Copyright © 2023 Technopro Design TeamB All rights reserved.</span>
         </div>
     </footer>
+    
+    <script defer th:src="@{/js/menu.js}"></script>
 </body>
 </html>

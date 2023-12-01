@@ -2,6 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>あげあげ運勢</title>
      <div class="underline"></div> <!-- 添加黄线 -->
     <link rel="stylesheet" href="/css/FortuneStyle.css">
@@ -11,8 +12,11 @@
 </head>
 
 <body>
-
-    <header th:replace="~{layout/header :: header}"></header> 
+    <header th:replace="~{layout/header :: header}"></header>
+    <nav th:replace="~{layout/nav :: nav}"></nav>
+    <div id="mask"></div>
+    
+    
     <div class="content-wrap">
     <div class="container">
         <div class="row">
@@ -38,10 +42,12 @@
 
     <script src="/js/FortuneJavascript.js"></script>
 
-       <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <span class="text-muted">Copyright © 2023 Technopro Design TeamB All rights reserved.</span>
         </div>
     </footer>
+    
+    <script defer th:src="@{/js/menu.js}"></script>
 </body>
 </html>

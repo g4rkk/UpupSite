@@ -111,7 +111,7 @@ h2 {
     width: 100%;
     height: 60px; /* 或者Footer的实际高度 */
     /* 其他样式，如文本对齐、颜色等 */
-    z-index: 1000; /* 确保Footer在其他内容之上 */
+    z-index: 3; /* 确保Footer在其他内容之上 */
    
 }
 

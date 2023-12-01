@@ -2,31 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ユーザー登録</title>
     <link href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.0/destyle.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/Register.css">
+    <link rel="stylesheet" th:href="@{/css/sign-in.css}">
 </head>
-<body>
-    <div th:if="${error}" class="row">
-        <div class="col-md-10 text-danger fw-bold">
-            <p th:text="${error}"></p>
-        </div>
-    </div>
+
+<body class="d-flex aligin-items-center py-4 bg-body-tertiary">
+    <header th:replace="~{layout/header :: header}"></header>
+    <nav th:replace="~{layout/nav :: nav}"></nav>
+    <div id="mask"></div>
     
-    <h1>ユーザー登録</h1>
-    <form th:action="@{/register}" th:object="${userForm}" method="post" class="form">
-        <label for="username">ユーザー名:</label>
-        <input type="text" th:field="*{name}"/><br/>
-
-        <label for="email">メールアドレス:</label>
-        <input type="email" th:field="*{email}"/><br/>
-
-        <label for="password">パスワード:</label>
-        <input type="password" th:field="*{password}"/><br/>
-
-        <button type="submit">登録</button>
-    </form>
+    <main class="form-signin w-100 m-auto">
+        <div th:if="${error}" class="row">
+            <div class="col-md-10 text-danger fw-bold">
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+        
+        <h1 class="h3 mb-3 fw-normal text-start">ユーザー登録</h1>
+        
+        <form th:action="@{/register}" th:object="${userForm}" method="POST" class="text-center">
+            <div class="form-floating">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="userName">
+                <label for="floatingInput">ユーザー名</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Emailアドレス</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="パスワード">
+                <label for="floatingPassword">パスワード</label>
+            </div>
+            <div class="text-start my-3">
+                <a th:href="@{/loginForm}" class="text-decoration-none text-body fw-bold register-form">ログインはこちら</a>
+            </div>
+            <button class="btn btn-primary w-100 py-2" type="submit">サインアップ</button>
+        </form>
+    </main>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer th:src="@{/js/menu.js}"></script>
 </body>
 </html>
