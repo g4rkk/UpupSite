@@ -23,9 +23,7 @@ body {
 .container {
     width: auto; /* 或者百分比宽度，取决于您的设计 */
     margin: auto;
-    overflow: hidden;
     padding: 20px;
-    box-sizing: border-box; /* 包括padding和border在内的宽度 */
 }
 
 /* 根据需要调整媒体查询 */

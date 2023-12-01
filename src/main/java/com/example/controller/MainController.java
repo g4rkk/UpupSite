@@ -55,7 +55,7 @@ public class MainController {
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
 		System.out.println("user_id: " + loginUser.getUser().getId());
 		System.out.println("▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲");
-    	this.mainService.choice_good_update(loginUser.getUser().getId());
+    	this.mainService.choice_bad_update(loginUser.getUser().getId());
     	return "redirect:/main/bad";
     }
     
